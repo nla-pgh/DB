@@ -1,0 +1,58 @@
+<%- model_class = Event -%>
+<script type="text/javascript" id="js">$(document).ready(function() {
+  // call the tablesorter plugin
+  $("table").tablesorter({
+  });
+}); </script>
+
+<div class="page-header">
+  <h1>Events</h1>
+</div>
+
+<h2 align="center"> Listing Events </h2>
+<table class="tablesorter-dropbox">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Date</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= link_to event.name, event_path(event) %></td>
+        <td><%= event.kind %></td>
+        <td><%= event.date %></td>
+        <td><%= event.location %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Event',
+            new_event_path,
+            :class => 'btn' %>
+<hr>
+<h2 align="center"> Search By </h2>  
+<table align="center" class = "span12 table-bordered">
+  <tr>
+    <td><strong> Person </strong> </td>
+    <td>
+      <%= simple_form_for :search, :url => events_by_person_path, :method => "get" do |f| %>
+      <%= f.input :name, :label => 'Person Name (Search by first name, last name, or both)' %>
+      <%= f.submit 'Search' %>
+      <% end %> 
+    </td>
+  </tr>
+  <tr>
+    <td><strong> Type of Event </strong> </td>
+    <td>
+      <%= simple_form_for :search, :url => events_by_type_path, :method => "get" do |f| %>
+      <%= f.input :type, :label => 'Event Type' %>
+      <%= f.submit 'Search' %>
+      <% end %> 
+    </td>
+  </tr>
+</table>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  person_id: 
+  school_id: 
+  start_grade: 1
+  counselor_name: MyString
+
+two:
+  person_id: 
+  school_id: 
+  start_grade: 1
+  counselor_name: MyString

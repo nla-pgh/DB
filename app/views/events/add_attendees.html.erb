@@ -1,0 +1,28 @@
+<%= simple_form_for @event, :url => event_add_attendees_2_path, :method => "get", :html => { :class => 'form-horizontal' } do |f| %>
+<h2> Invite People to the Event </h2>
+  <%= f.hidden_field :id %>
+  <table class = 'tablesorter-dropbox'>
+    <thead>
+      <tr>
+        <th> Name </th>
+        <th> Type </th>
+        <th> Invite </th>
+    </tr>
+    </thead>
+    <tbody>
+      <% Person.find_each do |person| %>
+        <tr>
+          <td> <%= person.name %></td>
+          <td> <%= person.kind_of_person %></td>
+          <% if(PersonEvent.where(:person_id => person.id, :event_id => @event.id).empty?) %>
+            <td> <%= check_box_tag 'add_ids[]', person.id %></td>
+          <% else %>
+            <td> <strong> Already Invited </strong> </td>
+          <% end %>
+        </tr> 
+      <% end %>
+    </tbody>
+  </table>
+
+    <%= f.button :submit, :label => "Update Attendees", :class => 'btn-primary' %>
+<% end %>

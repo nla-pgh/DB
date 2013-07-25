@@ -1,0 +1,20 @@
+<h2> The following people have attended a <%= @type %> </h2>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th> Person Name </th>
+			<th> Last Attended On</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @personevents.each do |person_event| %>
+			<% personEvent = PersonEvent.find(person_event.id) %>
+			<tr>
+				<td> <%= personEvent.person.name %> </td>
+				<td> <%= person_event.last_event_date  %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+ <%= link_to "Download Mailings", event_mailing_path(:people => @people_ids, :format => "xls"), :class => 'btn'%> 

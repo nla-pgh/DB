@@ -1,0 +1,32 @@
+<h2>Attendance for <%= @program_date.program_location.name %> on <%= @month + '/' + @day + '/' + @year %></h2>
+
+
+<%= simple_form_for @program_date, :url => url_for(:action => 'do_2', :controller => 'program_attendances'), :method => "get", :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.hidden_field :id %>
+  <table class = "span6 table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th> First Name </th>
+        <th> Last Name </th>
+        <th> Status </th>
+        <th> Comments </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @attendances.each do |attendance| %>
+        <%= fields_for "attendances[]", attendance do |att_fields| %>
+        <tr>
+          <td><%= link_to attendance.program_enrollment.person.first_name, person_path(attendance.program_enrollment.person) %></td>
+          <td><%= link_to attendance.program_enrollment.person.last_name, person_path(attendance.program_enrollment.person) %></td> 
+          <td><%= att_fields.select :status, :collection => ProgramDate::STATUS_OPTIONS %></td>
+          <td> <%= att_fields.text_field :comments %></td>
+
+        </tr> 
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+<p>
+  <%= f.button :submit, :label => "Update Attendees", :class => 'btn-primary' %>
+</p>
+<% end %>

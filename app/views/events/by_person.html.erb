@@ -1,0 +1,28 @@
+<h2> The following matches were found </h2>
+
+<% @people.each do |person| %>
+
+	<h3 align="center"> Events Attended By <%= person.first_name %> <%= person.last_name %> </h3>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th> Event Name </th>
+				<th> Event Date </th>
+				<th> Event Type </th>
+				<th> Event Location </th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% person.events.each do |event| %>
+				<tr>
+					<td> <%= link_to event.name, events_path(event) %> </td>
+					<td> <%= event.date %> </td>
+					<td> <%= event.kind %> </td>
+					<td> <%= event.location %> </td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+<% end %>

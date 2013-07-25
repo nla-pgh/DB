@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  person_role_id: 
+  form_id: 
+  complete: false
+  required: false
+
+two:
+  person_role_id: 
+  form_id: 
+  complete: false
+  required: false

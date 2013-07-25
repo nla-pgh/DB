@@ -1,0 +1,38 @@
+<h1 align ="center"> People </h1>
+
+<div class = "container">
+
+  <ul id="myTab" class="nav nav-tabs">
+    <li class="active"><a href="#search" data-toggle="tab">Search</a></li>
+    <li class=""><a href="#add_new" data-toggle="tab">Add New</a></li>
+  </ul>
+  <div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade active in" id="search">
+      <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+    </div>
+    <div class="tab-pane fade" id="add_new">
+       <h3 align = "center"> Select Type of New Person </h3>
+      <p>
+        <%= button_to "Student",
+            select_new_person_type_path(:type => 'student'),
+            :action => 'post',
+            :class => 'btn btn-primary'%>
+
+        <%= button_to "Employee",
+            select_new_person_type_path(:type => 'employee'),
+            :action => 'post',
+            :class => 'btn btn-primary'%>
+
+        <%= button_to "Volunteer",
+            select_new_person_type_path(:type => 'volunteer'),
+            :action => 'post',
+            :class => 'btn btn-primary'%>
+            
+        <%= button_to "Other",
+            select_new_person_type_path(:type => 'other'),
+            :action => 'post',
+            :class => 'btn btn-primary'%>
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<%- model_class = ProgramEmployee -%>
+<div class="page-header">
+  <h1>Employees for <%= @program_employee.program_location.program.name + ' at ' + @program_employee.program_location.name %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:program_location_id) %>:</strong></dt>
+  <dd><%= @program_employee.program_location_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:person_id) %>:</strong></dt>
+  <dd><%= @program_employee.person_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:job_description) %>:</strong></dt>
+  <dd><%= @program_employee.job_description %></dd>
+</dl>
+
+<%= render :partial => "program_employees" %>
+
+<div class="form-actions">
+  <%= link_to raw("<i class='icon-plus icon-white'></i> Add a New Employee"), new_program_employee_path, :class => 'btn btn-primary', :id => 'Create Program Employee' %>
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              program_employees_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_program_employee_path(@program_employee), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              program_employee_path(@program_employee),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

@@ -1,0 +1,851 @@
+-- MySQL dump 10.13  Distrib 5.5.31, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: NLA_development
+-- ------------------------------------------------------
+-- Server version	5.5.31-0ubuntu0.13.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `addresses`
+--
+
+DROP TABLE IF EXISTS `addresses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `addresses` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `person_id` int(11) DEFAULT NULL,
+  `street_address` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `state` varchar(255) DEFAULT NULL,
+  `zip_code` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_addresses_on_person_id` (`person_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `addresses`
+--
+
+LOCK TABLES `addresses` WRITE;
+/*!40000 ALTER TABLE `addresses` DISABLE KEYS */;
+/*!40000 ALTER TABLE `addresses` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `allergies`
+--
+
+DROP TABLE IF EXISTS `allergies`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `allergies` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `allergies`
+--
+
+LOCK TABLES `allergies` WRITE;
+/*!40000 ALTER TABLE `allergies` DISABLE KEYS */;
+/*!40000 ALTER TABLE `allergies` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `availabilities`
+--
+
+DROP TABLE IF EXISTS `availabilities`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `availabilities` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `person_id` int(11) DEFAULT NULL,
+  `day_of_week` int(11) DEFAULT NULL,
+  `start_time` int(11) DEFAULT NULL,
+  `end_time` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_availabilities_on_person_id` (`person_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `availabilities`
+--
+
+LOCK TABLES `availabilities` WRITE;
+/*!40000 ALTER TABLE `availabilities` DISABLE KEYS */;
+/*!40000 ALTER TABLE `availabilities` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `emergency_contacts`
+--
+
+DROP TABLE IF EXISTS `emergency_contacts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `emergency_contacts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `person_id` int(11) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `relationship` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_emergency_contacts_on_person_id` (`person_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `emergency_contacts`
+--
+
+LOCK TABLES `emergency_contacts` WRITE;
+/*!40000 ALTER TABLE `emergency_contacts` DISABLE KEYS */;
+/*!40000 ALTER TABLE `emergency_contacts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `event_employees`
+--
+
+DROP TABLE IF EXISTS `event_employees`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `event_employees` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `event_id` int(11) DEFAULT NULL,
+  `person_id` int(11) DEFAULT NULL,
+  `position` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_event_employees_on_event_id` (`event_id`),
+  KEY `index_event_employees_on_person_id` (`person_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `event_employees`
+--
+
+LOCK TABLES `event_employees` WRITE;
+/*!40000 ALTER TABLE `event_employees` DISABLE KEYS */;
+INSERT INTO `event_employees` VALUES (2,3,2,'Food Service','2013-07-17 19:33:37','2013-07-17 19:33:37'),(3,3,3,'Coordinator','2013-07-17 19:38:24','2013-07-17 19:38:24'),(4,3,1,'ttt','2013-07-17 20:02:42','2013-07-17 20:02:42');
+/*!40000 ALTER TABLE `event_employees` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `events`
+--
+
+DROP TABLE IF EXISTS `events`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `events` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `kind` varchar(255) DEFAULT NULL,
+  `location` varchar(255) DEFAULT NULL,
+  `street_address` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `state` varchar(255) DEFAULT NULL,
+  `zip_code` varchar(255) DEFAULT NULL,
+  `time` varchar(255) DEFAULT NULL,
+  `comments` varchar(255) DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `events`
+--
+
+LOCK TABLES `events` WRITE;
+/*!40000 ALTER TABLE `events` DISABLE KEYS */;
+INSERT INTO `events` VALUES (3,'Help! Santa is broke!','2013-07-12 13:30:54','2013-07-17 17:28:56','Lunch Fundraiser','Ice Cap','100 AnyStreet Ave.','North Pole','PA','12345','11:00 PM','Will make the Polar Bears Happy!','2013-06-20 00:00:00'),(5,'Trip to Carnegie Science Center','2013-07-14 02:39:56','2013-07-14 04:03:55','Museum Trip','Carnegie Science Center','11 somewhere','Pittsburgh','PA','15234','12:00 AM',NULL,'2013-06-20 00:00:00'),(7,'Scrooge\'s Luncheon','2013-07-17 17:30:57','2013-07-17 17:30:57','Lunch Fundraiser','NLA Office','10 Main St.','New York City','NY','11346','5:00 PM','He doesn\'t actually need money.','2013-06-20 00:00:00');
+/*!40000 ALTER TABLE `events` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `forms`
+--
+
+DROP TABLE IF EXISTS `forms`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `forms` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `forms`
+--
+
+LOCK TABLES `forms` WRITE;
+/*!40000 ALTER TABLE `forms` DISABLE KEYS */;
+/*!40000 ALTER TABLE `forms` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `interests`
+--
+
+DROP TABLE IF EXISTS `interests`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `interests` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `program_id` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_interests_on_program_id` (`program_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `interests`
+--
+
+LOCK TABLES `interests` WRITE;
+/*!40000 ALTER TABLE `interests` DISABLE KEYS */;
+/*!40000 ALTER TABLE `interests` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `medications`
+--
+
+DROP TABLE IF EXISTS `medications`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `medications` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `medications`
+--
+
+LOCK TABLES `medications` WRITE;
+/*!40000 ALTER TABLE `medications` DISABLE KEYS */;
+/*!40000 ALTER TABLE `medications` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `person_allergies`
+--
+
+DROP TABLE IF EXISTS `person_allergies`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `person_allergies` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `person_id` int(11) DEFAULT NULL,
+  `allergy_id` int(11) DEFAULT NULL,
+  `severity` int(11) DEFAULT NULL,
+  `comments` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_person_allergies_on_person_id` (`person_id`),
+  KEY `index_person_allergies_on_allergy_id` (`allergy_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `person_allergies`
+--
+
+LOCK TABLES `person_allergies` WRITE;
+/*!40000 ALTER TABLE `person_allergies` DISABLE KEYS */;
+/*!40000 ALTER TABLE `person_allergies` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `person_events`
+--
+
+DROP TABLE IF EXISTS `person_events`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `person_events` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `event_id` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `person_id` int(11) DEFAULT NULL,
+  `contacted` tinyint(1) DEFAULT NULL,
+  `responded` tinyint(1) DEFAULT NULL,
+  `attending` tinyint(1) DEFAULT NULL,
+  `attended` tinyint(1) DEFAULT NULL,
+  `paid` tinyint(1) DEFAULT NULL,
+  `notes` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_person_events_on_event_id` (`event_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `person_events`
+--
+
+LOCK TABLES `person_events` WRITE;
+/*!40000 ALTER TABLE `person_events` DISABLE KEYS */;
+INSERT INTO `person_events` VALUES (1,NULL,'2013-07-15 17:22:12','2013-07-15 17:22:12',1,NULL,NULL,NULL,NULL,NULL,NULL),(2,NULL,'2013-07-15 17:22:12','2013-07-15 17:22:12',2,NULL,NULL,NULL,NULL,NULL,NULL),(3,NULL,'2013-07-15 17:22:13','2013-07-15 17:22:13',4,NULL,NULL,NULL,NULL,NULL,NULL),(4,3,'2013-07-15 17:25:25','2013-07-19 04:38:50',1,1,1,0,1,1,''),(12,3,'2013-07-15 17:47:49','2013-07-19 05:17:01',2,1,1,0,1,1,'Delia'),(48,7,'2013-07-17 17:31:20','2013-07-17 17:34:34',1,0,0,0,1,0,'');
+/*!40000 ALTER TABLE `person_events` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `person_interests`
+--
+
+DROP TABLE IF EXISTS `person_interests`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `person_interests` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `person_id` int(11) DEFAULT NULL,
+  `interest_id` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_person_interests_on_person_id` (`person_id`),
+  KEY `index_person_interests_on_interest_id` (`interest_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `person_interests`
+--
+
+LOCK TABLES `person_interests` WRITE;
+/*!40000 ALTER TABLE `person_interests` DISABLE KEYS */;
+/*!40000 ALTER TABLE `person_interests` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `person_medications`
+--
+
+DROP TABLE IF EXISTS `person_medications`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `person_medications` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `person_id` int(11) DEFAULT NULL,
+  `medication_id` int(11) DEFAULT NULL,
+  `comments` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_person_medications_on_person_id` (`person_id`),
+  KEY `index_person_medications_on_medication_id` (`medication_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `person_medications`
+--
+
+LOCK TABLES `person_medications` WRITE;
+/*!40000 ALTER TABLE `person_medications` DISABLE KEYS */;
+/*!40000 ALTER TABLE `person_medications` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `person_role_forms`
+--
+
+DROP TABLE IF EXISTS `person_role_forms`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `person_role_forms` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `person_role_id` int(11) DEFAULT NULL,
+  `form_id` int(11) DEFAULT NULL,
+  `complete` tinyint(1) DEFAULT NULL,
+  `required` tinyint(1) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_person_role_forms_on_person_role_id` (`person_role_id`),
+  KEY `index_person_role_forms_on_form_id` (`form_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `person_role_forms`
+--
+
+LOCK TABLES `person_role_forms` WRITE;
+/*!40000 ALTER TABLE `person_role_forms` DISABLE KEYS */;
+/*!40000 ALTER TABLE `person_role_forms` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `person_roles`
+--
+
+DROP TABLE IF EXISTS `person_roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `person_roles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `person_id` int(11) DEFAULT NULL,
+  `role_id` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_person_roles_on_person_id` (`person_id`),
+  KEY `index_person_roles_on_role_id` (`role_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `person_roles`
+--
+
+LOCK TABLES `person_roles` WRITE;
+/*!40000 ALTER TABLE `person_roles` DISABLE KEYS */;
+/*!40000 ALTER TABLE `person_roles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `person_schools`
+--
+
+DROP TABLE IF EXISTS `person_schools`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `person_schools` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `person_id` int(11) DEFAULT NULL,
+  `school_id` int(11) DEFAULT NULL,
+  `start_grade` int(11) DEFAULT NULL,
+  `counselor_name` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_person_schools_on_person_id` (`person_id`),
+  KEY `index_person_schools_on_school_id` (`school_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `person_schools`
+--
+
+LOCK TABLES `person_schools` WRITE;
+/*!40000 ALTER TABLE `person_schools` DISABLE KEYS */;
+/*!40000 ALTER TABLE `person_schools` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `person_supports`
+--
+
+DROP TABLE IF EXISTS `person_supports`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `person_supports` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `person_id` int(11) DEFAULT NULL,
+  `support_service_id` int(11) DEFAULT NULL,
+  `comments` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_person_supports_on_person_id` (`person_id`),
+  KEY `index_person_supports_on_support_service_id` (`support_service_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `person_supports`
+--
+
+LOCK TABLES `person_supports` WRITE;
+/*!40000 ALTER TABLE `person_supports` DISABLE KEYS */;
+/*!40000 ALTER TABLE `person_supports` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `phone_numbers`
+--
+
+DROP TABLE IF EXISTS `phone_numbers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `phone_numbers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `person_id` int(11) DEFAULT NULL,
+  `phone_number` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_phone_numbers_on_person_id` (`person_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `phone_numbers`
+--
+
+LOCK TABLES `phone_numbers` WRITE;
+/*!40000 ALTER TABLE `phone_numbers` DISABLE KEYS */;
+/*!40000 ALTER TABLE `phone_numbers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `program_attendances`
+--
+
+DROP TABLE IF EXISTS `program_attendances`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `program_attendances` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `program_enrollment_id` int(11) DEFAULT NULL,
+  `program_date_id` int(11) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `comments` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_program_attendances_on_program_enrollment_id` (`program_enrollment_id`),
+  KEY `index_program_attendances_on_program_date_id` (`program_date_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `program_attendances`
+--
+
+LOCK TABLES `program_attendances` WRITE;
+/*!40000 ALTER TABLE `program_attendances` DISABLE KEYS */;
+/*!40000 ALTER TABLE `program_attendances` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `program_dates`
+--
+
+DROP TABLE IF EXISTS `program_dates`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `program_dates` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `program_id` int(11) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `comments` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_program_dates_on_program_id` (`program_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `program_dates`
+--
+
+LOCK TABLES `program_dates` WRITE;
+/*!40000 ALTER TABLE `program_dates` DISABLE KEYS */;
+/*!40000 ALTER TABLE `program_dates` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `program_employees`
+--
+
+DROP TABLE IF EXISTS `program_employees`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `program_employees` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `program_location_id` int(11) DEFAULT NULL,
+  `worker_id` int(11) DEFAULT NULL,
+  `job_description` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_program_employees_on_program_location_id` (`program_location_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `program_employees`
+--
+
+LOCK TABLES `program_employees` WRITE;
+/*!40000 ALTER TABLE `program_employees` DISABLE KEYS */;
+/*!40000 ALTER TABLE `program_employees` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `program_enrollments`
+--
+
+DROP TABLE IF EXISTS `program_enrollments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `program_enrollments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `program_location_id` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `person_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_program_enrollments_on_program_location_id` (`program_location_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `program_enrollments`
+--
+
+LOCK TABLES `program_enrollments` WRITE;
+/*!40000 ALTER TABLE `program_enrollments` DISABLE KEYS */;
+/*!40000 ALTER TABLE `program_enrollments` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `program_locations`
+--
+
+DROP TABLE IF EXISTS `program_locations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `program_locations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `program_id` int(11) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `state` varchar(255) DEFAULT NULL,
+  `zip_code` int(11) DEFAULT NULL,
+  `street_address` varchar(255) DEFAULT NULL,
+  `active` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_program_locations_on_program_id` (`program_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `program_locations`
+--
+
+LOCK TABLES `program_locations` WRITE;
+/*!40000 ALTER TABLE `program_locations` DISABLE KEYS */;
+/*!40000 ALTER TABLE `program_locations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `programs`
+--
+
+DROP TABLE IF EXISTS `programs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `programs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `programs`
+--
+
+LOCK TABLES `programs` WRITE;
+/*!40000 ALTER TABLE `programs` DISABLE KEYS */;
+INSERT INTO `programs` VALUES (1,'Novanet','Course Credit Recovery','2013-07-09 03:39:35','2013-07-09 03:39:35');
+/*!40000 ALTER TABLE `programs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `role_forms`
+--
+
+DROP TABLE IF EXISTS `role_forms`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `role_forms` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `role_id` int(11) DEFAULT NULL,
+  `form_id` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_role_forms_on_role_id` (`role_id`),
+  KEY `index_role_forms_on_form_id` (`form_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `role_forms`
+--
+
+LOCK TABLES `role_forms` WRITE;
+/*!40000 ALTER TABLE `role_forms` DISABLE KEYS */;
+/*!40000 ALTER TABLE `role_forms` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `roles`
+--
+
+DROP TABLE IF EXISTS `roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `roles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `roles`
+--
+
+LOCK TABLES `roles` WRITE;
+/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_migrations`
+--
+
+DROP TABLE IF EXISTS `schema_migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_migrations` (
+  `version` varchar(255) NOT NULL,
+  UNIQUE KEY `unique_schema_migrations` (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_migrations`
+--
+
+LOCK TABLES `schema_migrations` WRITE;
+/*!40000 ALTER TABLE `schema_migrations` DISABLE KEYS */;
+INSERT INTO `schema_migrations` VALUES ('20130624064031'),('20130624071052'),('20130624171435'),('20130624171913'),('20130625142609'),('20130625143444'),('20130625143745'),('20130625144334'),('20130625165358'),('20130625165526'),('20130625171152'),('20130625172832'),('20130625173704'),('20130625174454'),('20130625175749'),('20130625181154'),('20130628031036'),('20130628211116'),('20130629213424'),('20130629223107'),('20130629223410'),('20130629223818'),('20130702134042'),('20130702135316'),('20130702135859'),('20130702140017'),('20130702140345'),('20130702164353'),('20130702193121'),('20130708213641'),('20130708214117'),('20130708214319'),('20130709031338'),('20130709031814'),('20130709031923'),('20130709032050'),('20130709032224'),('20130709032425'),('20130709032815'),('20130709133525'),('20130709133635'),('20130709144732'),('20130710154510'),('20130710154537'),('20130710161637'),('20130710174836'),('20130717184346'),('20130717184811'),('20130718145138'),('20130718155646'),('20130718180306'),('20130722181006'),('20130722181452'),('20130722182233'),('20130722182309'),('20130722182522'),('20130722182633'),('20130722182748'),('20130722183135'),('20130722183213'),('20130722183757'),('20130722184104'),('20130722184122'),('20130722184149'),('20130722184510'),('20130722184630'),('20130722184707'),('20130722184803'),('20130722185035'),('20130722185225');
+/*!40000 ALTER TABLE `schema_migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schools`
+--
+
+DROP TABLE IF EXISTS `schools`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schools` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schools`
+--
+
+LOCK TABLES `schools` WRITE;
+/*!40000 ALTER TABLE `schools` DISABLE KEYS */;
+INSERT INTO `schools` VALUES (1,'School(1)','123 Anywhere Lane','2013-07-09 03:41:06','2013-07-09 03:41:06');
+/*!40000 ALTER TABLE `schools` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `support_services`
+--
+
+DROP TABLE IF EXISTS `support_services`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `support_services` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `support_services`
+--
+
+LOCK TABLES `support_services` WRITE;
+/*!40000 ALTER TABLE `support_services` DISABLE KEYS */;
+/*!40000 ALTER TABLE `support_services` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2013-07-22 14:58:12

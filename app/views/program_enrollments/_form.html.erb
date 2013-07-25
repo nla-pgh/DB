@@ -1,0 +1,10 @@
+<%= simple_form_for @program_enrollment, :html => { :class => 'form-horizontal' } do |f| %>
+
+  <%= f.hidden_field :program_location_id, value: @id%>
+  <p><%= f.collection_select(:person_id, Person.all, :id, :first_name)%>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                programs_path, :class => 'btn' %>
+  </div>
+<% end %>

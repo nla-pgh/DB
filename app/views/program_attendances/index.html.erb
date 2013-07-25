@@ -1,0 +1,12 @@
+<%- model_class = ProgramDates -%>
+<div class="page-header">
+  <h1>Program Attendance</h1>
+</div>
+
+<%= form_tag('program_date/do', method: "get") do %>
+<h3> Select Date </h3>
+  <%= select_date(date = Date.current) %>
+<h3> Select School </h3>
+  <%= select_tag "location_id", options_from_collection_for_select(ProgramLocation.all, "id", "name") %>
+  <%= submit_tag("Continue") %>
+<% end %>

@@ -1,0 +1,18 @@
+<%= f.fields_for :phone_numbers do |phone_number| %>
+  <tr class = "fields">
+    <%= phone_number.hidden_field :person_id, :value => @person.id %>
+    	<td>
+    		<p> Phone Number </p>
+    		<%= phone_number.text_field :phone_number, :placeholder => 'xxx-xxx-xxxx' %>
+    	</td>
+
+    	<td>
+    		<p> Type </p>
+    		<%= phone_number.select :type, [['Select', nil], ['Cell', 'cell'],['Home','home'],['Work','work']]%>
+    	</td>
+
+    	<td>
+    		<%= phone_number.link_to_remove "Remove" , :class => 'btn btn-danger'%>
+    	</td>
+   </tr>
+<% end %>

@@ -1,0 +1,10 @@
+<div class="page-header">
+  <h1>Program Attendance</h1>
+</div>
+
+<%= form_tag('program_attendance/do', method: "get") do %>
+<h3> Select Date </h3>
+  <%= select_date(date = Date.current) %>
+  <%= hidden_field_tag :location_id, @location_id %>
+  <%= submit_tag("Continue") %>
+<% end %>

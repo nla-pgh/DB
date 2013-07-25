@@ -1,0 +1,17 @@
+<%- model_class = ProgramEnrollment -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:program_location_id) %>:</strong></dt>
+  <dd><%= @program_enrollment.program_location_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:person_id) %>:</strong></dt>
+  <dd><%= @program_enrollment.person_id %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to raw("<i class='icon-list'></i> Display All Programs"), programs_path, :class => 'btn'  %>&nbsp;&nbsp;
+  <%= link_to raw("<i class='icon-pencil'></i> Edit Enrollment"), edit_program_enrollment_path(@program_enrollment), :class => 'btn' %>&nbsp;&nbsp;
+  <%= link_to raw("<i class='icon-remove icon-white'></i> Delete Enrollment"), program_enrollment_path(@program_enrollment), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

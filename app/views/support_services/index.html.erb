@@ -1,0 +1,27 @@
+<h1>Listing support_services</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @support_services.each do |support_service| %>
+      <tr>
+        <td><%= support_service.name %></td>
+        <td><%= link_to 'Show', support_service %></td>
+        <td><%= link_to 'Edit', edit_support_service_path(support_service) %></td>
+        <td><%= link_to 'Destroy', support_service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Support service', new_support_service_path %>

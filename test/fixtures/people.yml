@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  gender: false
+  DOB: 2013-07-22 15:10:21
+  race: MyString
+  email: MyString
+  parent_id: MyString
+  household_number_of_members: 1
+  in_foster_care: false
+  school_lunch_program: MyString
+  clinic_name: MyString
+  clinic_street_address: MyString
+  clinic_city: MyString
+  clinic_state: MyString
+  clinic_zip_code: MyString
+  clinic_phone_number: MyString
+  position: MyString
+  active: false
+
+two:
+  first_name: MyString
+  last_name: MyString
+  gender: false
+  DOB: 2013-07-22 15:10:21
+  race: MyString
+  email: MyString
+  parent_id: MyString
+  household_number_of_members: 1
+  in_foster_care: false
+  school_lunch_program: MyString
+  clinic_name: MyString
+  clinic_street_address: MyString
+  clinic_city: MyString
+  clinic_state: MyString
+  clinic_zip_code: MyString
+  clinic_phone_number: MyString
+  position: MyString
+  active: false

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Program enrollment:</strong>
+  <%= @program_attendance.program_enrollment %>
+</p>
+
+<p>
+  <strong>Program date:</strong>
+  <%= @program_attendance.program_date %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @program_attendance.status %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @program_attendance.comments %>
+</p>
+
+<%= link_to 'Edit', edit_program_attendance_path(@program_attendance) %> |
+<%= link_to 'Back', program_dates_path %>

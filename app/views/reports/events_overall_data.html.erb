@@ -1,0 +1,19 @@
+<h1> Overall Event Data for Events Between <%= @start_date %> and <%= @end_date %> </h1>
+
+<h3> <%= @number_of_people %> people have attended at least one event </h3>
+<h3> <%= @number_of_person_events %> event attendances have occurred </h3>
+<table class = "table table-striped">
+	<thead>
+		<tr>
+			<th>These are the people who have attended an event</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @people.each do |person_id| %>
+			<% person = Person.find(person_id) %>
+			<tr>
+				<td> <%= person.first_name %> <%= person.last_name %> </td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

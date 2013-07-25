@@ -1,0 +1,16 @@
+<h1> Adding a New <%= @type.titleize %> To the Database </h1>
+<% if @type == 'student' %>
+
+	<%= render 'new_student_form' %>
+<% elsif @type == 'employee' %>
+
+	<%= render 'new_employee_form' %>
+<% elsif @type == 'volunteer' %>
+
+	<%= render 'new_volunteer_form' %>	
+<% elsif @type == 'other' %>
+
+	<%= render 'new_other_form' %>	
+<% else %>
+	<h1> The form could not be loaded </h1>
+<% end %>

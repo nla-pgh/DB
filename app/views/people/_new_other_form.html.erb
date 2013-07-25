@@ -1,0 +1,76 @@
+<div class="container">
+<%= simple_nested_form_for @person, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="accordion" id="accordion">
+
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#basicInfo">
+          Basic Information
+        </a>
+      </div>
+      <div style="height: 0;" id="basicInfo" class="accordion-body collapse">
+        <div class="accordion-inner">
+
+<div class = "row">
+        <div class = "span8">
+          <p> First Name, Last Name </p>
+          <p> <%= f.text_field :first_name %> <%= f.text_field :last_name %> </p>
+        </div>
+</div>
+
+<div class = "row">
+
+        <div class = "span4">
+          <p> Date of Birth </p>
+          <p> <%= f.text_field :DOB, :placeholder => "YYYY-MM-DD" %> </p>
+        </div>
+
+        <div class = "span4">
+          <p> Gender </p>
+          <p> <%=f.select :gender , [['Select', nil],['Male',true],['Female',false]] %> </p>
+        </div>
+</div>
+
+<div class = "row">
+
+  <table id ="addr", class = "span10 table table-striped">
+      <%= f.fields_for :addresses, :wrapper => false %>
+  </table>  
+
+ <%= f.link_to_add "Add A New Address", :addresses, :data => {:target => '#addr'}, :class => 'span4 btn btn-primary'%>
+</div>
+        </div></div></div>
+
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#contactInfo">
+          Contact Information
+        </a>
+      </div>
+      <div style="height: 0;" id="contactInfo" class="accordion-body collapse">
+        <div class="accordion-inner">
+
+<div class = "row">
+        <div class = "span8">
+          <p> Email </p>
+          <p> <%= f.text_field :email %> </p>
+        </div>
+</div>
+<h3> Phone Numbers </h3>
+<div class = "row">
+
+  <table id ="phone_numbers", class = "span12 table table-striped">
+      <%= f.fields_for :phone_numbers, :wrapper => false %>
+  </table>
+
+ <%= f.link_to_add "Add A New Phone Number", :phone_numbers, :data => {:target => '#phone_numbers'}, :class => 'span4 btn btn-primary'%>
+</div>
+
+        </div></div></div>
+
+</div>
+
+</div>
+
+<%= f.submit nil, :class => 'btn btn-primary' %>
+<% end %>

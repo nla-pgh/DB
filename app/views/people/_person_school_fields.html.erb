@@ -1,0 +1,23 @@
+<%= f.fields_for :person_schools do |school| %>
+  <tr class = "fields">
+    <%= school.hidden_field :person_id, :value => @person.id %>
+      <td>
+        <p> School Name </p>
+        <%= school.collection_select :school_id, School.all.order('name'), :id, :name %>
+      </td>
+
+      <td>
+        <p> Counselor Name </p>
+        <%= school.text_field :counselor_name %>
+      </td>
+
+      <td>
+        <p> Went to this school since grade ... </p>
+        <%= school.text_field :start_grade %>
+      </td>
+
+      <td>
+        <%= school.link_to_remove "Remove" , :class => 'btn btn-danger'%>
+      </td>
+   </tr>
+<% end %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  person_id: 
+  allergy_id: 
+  severity: 1
+  comments: MyString
+
+two:
+  person_id: 
+  allergy_id: 
+  severity: 1
+  comments: MyString

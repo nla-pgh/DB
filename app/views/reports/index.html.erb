@@ -1,0 +1,36 @@
+<h1> Reports </h1>
+<div class = "container">
+	<table class = "table table-striped table-bordered">
+		<tr>
+			<td>
+				<strong> Overall Events Data </strong>
+			</td>
+			<td> 
+<%= simple_form_for :search, :url => url_for(controller: 'reports', action: 'events_overall_data'), :method => "post" do |f| %>
+  <p> Start Date(YYYY-MM-DD) </p>
+  <%= f.text_field :start_date %>
+  <p> End Date(YYYY-MM-DD) </p>
+  <%= f.text_field :end_date %>
+  <%= f.submit 'Go' %>
+<% end %>
+  			</td>
+  		</tr>
+  		<!--
+		<tr>
+			<td>
+				<strong> Report for Students and Events </strong>
+				<a href="/students_events_guide.html"> Help </a>
+			</td>
+			<td> 
+<%= simple_form_for :search, :url => url_for(controller: 'reports', action: 'students_events'), :method => "post" do |f| %>
+  <p> Student Info </p>
+  <%= f.text_field :student_info, :class => "span6"%>
+  <p> Event Info </p>
+  <%= f.text_field :event_info, :class => "span6" %>
+  <%= f.submit 'Go' %>
+<% end %>
+  			</td>
+  		</tr>
+  	-->
+  	</table>
+</div>

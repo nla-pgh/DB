@@ -1,0 +1,208 @@
+<script type="text/javascript" id="js">$(document).ready(function() {
+  // call the tablesorter plugin
+  $("table").tablesorter({
+  });
+}); </script>
+
+<!--
+ <% if @event.event_employees.empty? %>
+  <p>&nbsp;&nbsp;<em>Currently no employees at this location</em></p>
+  <p>&nbsp;</p>
+<% end %>
+-->
+
+<%- model_class = Event -%>
+
+<div class="page-header">
+  <h1 align="center"><%= @event.name %></h1> 
+</div>
+  <div class="container">
+    <h2> Event Details
+    <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                  edit_event_path(@event), :class => 'btn btn-mini' %></h2>
+    <table  class = "span6 table table-striped table-bordered">
+      <tr>
+        <td><strong> Date <strong></td>
+        <td> <%= @event.date %> </td>
+      </tr>
+      <tr>
+        <td><strong> Time <strong></td>
+        <td> <%= @event.time %> </td>
+      </tr>
+      <tr>
+        <td><strong> Location <strong></td>
+        <td> <%= @event.location %> </td>
+      </tr>
+      <tr>
+        <td><strong> Address <strong></td>
+        <td> <%= @event.full_address %> </td>
+      </tr>
+
+      <tr>
+        <td><strong> Type <strong></td>
+        <td> <%= @event.kind %> </td>
+      </tr>
+      <tr>
+        <td><strong> Notes <strong></td>
+        <td> <%= @event.comments   %> </td>
+      </tr>
+    </table>
+  </div>
+<hr>
+<div class="container">
+
+<h2> List of Invited People <%= link_to "Invite People To This Event", event_add_attendees_path(:id => @event.id), :class => 'btn'%>   </h2>
+<p> Warning: checking the "Unvite" box will remove the data row </p>
+<%= simple_form_for @event, :url => event_edit_attendees_path, :method => "post", :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.hidden_field :id %>
+  <table class = 'tablesorter, tablesorter-dropbox'>
+    <thead>
+      <th> First Name </th>
+      <th> Last Name </th>
+      <th> Contacted? </th>
+      <th> Responded? </th>
+      <th> RSVPed? </th>
+      <th> Paid? </th>
+      <th> Attended? </th>
+      <th> Notes </th>
+      <th> Uninvite </th>
+    </thead>
+    <tbody>
+      <% @event.person_events.each do |person_event| %>
+        <%= fields_for "person_events[]", person_event do |pe_fields| %>
+        <tr>
+          <td> <strong> <%= link_to person_event.person.first_name, edit_person_path(person_event.person) %> </td>
+          <td> <strong> <%= person_event.person.last_name %> </td>
+          <td> <%= pe_fields.check_box :contacted %></td>
+          <td> <%= pe_fields.check_box :responded %></td>
+          <td> <%= pe_fields.check_box :attending %></td>
+          <td> <%= pe_fields.check_box :paid %></td>
+          <td> <%= pe_fields.check_box :attended %></td>
+          <td> <%= pe_fields.text_field :notes %> </td>
+          <td> <%= check_box_tag 'remove_ids[]', person_event.id %>
+          </td>
+        </tr> 
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= f.button :submit, :label => "Update Attendees", :class => 'btn-primary' %>
+<% end %>
+</div>
+<div class = "container">
+  <h2> Event Workers 
+    <a href="#addWorker" role="button" class="btn" data-toggle="modal">Add Worker</a> </h2>
+  <table class = 'tablesorter, tablesorter-dropbox'>
+    <thead>
+      <th> Name </th>
+      <th> Position </th>
+      <th> Type     </th>
+      <th> Remove </th>
+    </thead>
+    <tbody>
+      <% @event.event_employees.each do |worker| %>
+        <tr> 
+          <td><strong ><%= worker.person.first_name %> <%= worker.person.last_name %> </strong> </td>
+          <td> <%= worker.position %> </td>
+          <td> <%= worker.person.kind_of_person %> </td>
+          <td>           
+              <%= link_to "Remove",
+                      event_employee_path(worker),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+          </td>
+        </tr> 
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<hr>
+</div>
+  <h2> Mailings 
+    <a href="#myModal" role="button" class="btn" data-toggle="modal">Download Spreadsheet </a>
+  </h2>
+  <h3 align="center"> All Invited People</h3>
+  <table class = 'tablesorter, tablesorter-dropbox'>
+    <thead>
+      <strong>
+      <th> Last Name </th>
+      <th> First Name </th> </strong>
+      <th> Street Address Line 1 </th>
+      <th> Street Address Line 2 </th>
+      <th> Email </th>
+    </thead>
+    <tbody>
+      <% @event.person_events.each do |person_event| %>
+        <tr>
+          <td> <strong ><%= person_event.person.last_name %> </strong> </td>
+          <td><strong> <%= person_event.person.first_name %> </strong></td>
+          <td> <%= person_event.person.address1 %> </td>
+          <td> <%= person_event.person.address2 %> </td>
+          <td> <%= person_event.person.email   %> </td>
+        </tr> 
+      <% end %>
+    </tbody>
+  </table>
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Download Excel Spreadsheet</h3>
+  </div>
+  <div class="modal-body">
+
+    <%= simple_form_for :search, :url => event_mailing_search_path, :method => "get" do |f| %>
+    <%= label_tag "Contacted?" %>
+    <%= f.select :contacted, [['All','all'],['Yes','true'],['No','false']] %>
+    <%= label_tag "Responded?" %>
+    <%= f.select :responded, [['All','all'],['Yes','true'],['No','false']] %>
+    <%= label_tag "RSVPed?" %>
+    <%= f.select :attending, [['All','all'],['Yes','true'],['No','false']] %>
+    <%= label_tag "Paid?" %>
+    <%= f.select :paid, [['All','all'],['Yes','true'],['No','false']] %>
+    <%= label_tag "Attended?" %>
+    <%= f.select :attended, [['All','all'],['Yes','true'],['No','false']] %>  
+    <%= f.button :submit, "Download File" %>
+    <% end %>
+  </div>
+
+  <div class="modal-footer">
+  <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+  </div>
+
+</div>
+<!-- Modal -->
+<div id="addWorker" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="addWorkerLabel">Add Worker</h3>
+  </div>
+  <div class="modal-body">
+    <% @event_employee = EventEmployee.new %>
+    <%= simple_form_for @event_employee, :url => event_employees_path, :method => "post" do |f| %>
+    <%= f.hidden_field :event_id, :value => @event.id %>
+    <%= f.collection_select :person_id, Person.all, :id, :name %>
+    <%= f.input :position %>
+    <%= f.button :submit, "Add Employee" %>
+    <% end %>
+  </div>
+
+  <div class="modal-footer">
+  <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+  </div>
+  
+</div>
+
+<hr>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              events_path, :class => 'btn'  %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              event_path(@event),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

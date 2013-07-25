@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  person_id: 
+  support_service_id: 
+  comments: MyString
+
+two:
+  person_id: 
+  support_service_id: 
+  comments: MyString

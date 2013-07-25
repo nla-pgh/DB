@@ -1,0 +1,18 @@
+<%= simple_form_for @event, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name %>
+  <%= f.input :kind , :label => "Type"%>		
+  <%= f.input :date %>
+  <%= f.input :time %>
+  <%= f.input :location, :label => "Location (Ex. NLA Office)" %>
+  <%= f.input :street_address %>
+  <%= f.input :city          %>
+  <%= f.input :state         %>
+  <%= f.input :zip_code      %>
+  <p> Notes/Comments </p> 
+  <%= f.text_area :comments %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                events_path, :class => 'btn' %>
+  </div>
+<% end %>

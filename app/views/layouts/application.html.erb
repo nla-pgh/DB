@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NLA Demo</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+<div class="span4">
+	<div class="navigation">
+		<%= render :partial => "partials/navigation" %>
+	</div>
+</div>
+
+<div class="span8">
+	<div class="content">
+	<%= yield %>
+	</div>
+</div>
+
+
+</body>
+</html>

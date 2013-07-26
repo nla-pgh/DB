@@ -8,8 +8,162 @@
   </ul>
   <div id="myTabContent" class="tab-content">
     <div class="tab-pane fade active in" id="search">
-      <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+<!-- Searching Goes Here -->
+
+<%= form_tag person_search_path, :method => 'post' do %>
+  <div class="container">
+    <div class = "row">
+      <h3 class = "span8"> Searching for These Types of People </h3>
     </div>
+
+    <div class = "row">
+      <div class = "span3 ">
+        <p> <%= label_tag :is_student, "Student" %><p>
+        <p> <%= check_box_tag :is_student, true%></p>
+      </div>
+      <div class = "span3">
+        <p>  <%= label_tag :is_employee, "Employee" %> <p>
+        <p> <%= check_box_tag :is_employee, true%></p>
+      </div>
+      <div class = "span3">
+        <p>  <%= label_tag :is_volunteer, "Volunteer" %> <p>
+        <p> <%= check_box_tag :is_volunteer, true%></p>
+      </div>
+      <div class = "span2">
+        <p>  <%= label_tag :is_other, "Other" %> <p>
+        <p> <%= check_box_tag :is_other, true%></p>
+      </div>  
+    </div>
+<hr>
+    <div class="accordion" id="accordion">
+
+      <div class="accordion-group">
+        <div class="accordion-heading">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#general">
+            General Fields
+          </a>
+        </div>
+        <div style="height: 0;" id="general" class="accordion-body collapse">
+          <div class="accordion-inner">
+<div class = "row">
+
+        <div class = "span8 ">
+          <p> First Name, Last Name </p>
+          <p> <%= text_field_tag :first_name %> <%= text_field_tag :last_name %> </p>
+        </div>
+
+        <div class = "span3">
+          <p> Gender </p>
+          <p> <%= select_tag :gender, '<option value="true">Male</option>
+                                       <option value="false">Female</option>'.html_safe, :include_blank => true %> </p>
+        </div>
+</div> <!-- End ROW -->
+<div class = "row">
+
+        <div class = "span4">
+          <p> Race </p>
+          <p> <%= select_tag :race, '  <option>African American</option>
+                                       <option>Asian</option>
+                                       <option>Caucasian</option>
+                                       <option>Hispanic</option>
+                                       <option>Native Ameriacn</option>
+                                       <option>Other</option>'.html_safe, :include_blank => true %> </p>
+        </div>
+
+        <div class = "span7">
+          <p> Date of Birth </p>
+          <p> Between <%= text_field_tag :DOB_start, nil, :placeholder => "YYYY-MM-DD"%> and
+                      <%= text_field_tag :DOB_end, nil, :placeholder => "YYYY-MM-DD"%> </p>
+        </div>
+
+
+</div> <!-- End ROW -->
+<div class = "row">
+        <div class = "span4">
+          <p> Zip Code </p>
+          <p> <%= text_field_tag :zip_code %> </p>
+        </div>
+
+</div> <!-- End ROW -->
+          </div></div></div>
+
+      <div class="accordion-group">
+        <div class="accordion-heading">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#student">
+            Students Information
+          </a>
+        </div>
+        <div style="height: 0;" id="student" class="accordion-body collapse">
+          <div class="accordion-inner">
+<h3> School </h3>
+<div class = "row">
+        <div class = "span4 ">
+          <p> School Name </p>
+          <p> <%= select_tag :school, options_from_collection_for_select(School.all, "id", "name"), :include_blank => true %> </p>
+        </div>
+
+        <div class = "span4 ">
+          <p> Cohort </p>
+          <p> <%= text_field_tag :cohort %> </p>
+        </div>
+
+</div> <!-- End ROW -->
+
+<hr>
+
+<h3> Household Information </h3>
+<div class = "row">
+        <div class = "span4 ">
+          <p> Number of Members in Household </p>
+          <p> <%= text_field_tag :household_number_of_members %> </p>
+        </div>
+
+        <div class = "span4">
+          <p> School Lunch Program </p>
+          <p> <%= select_tag :school_lunch_program, '
+                                       <option>Free</option>
+                                       <option>Reduced</option>
+                                       <option>Does Not Qualify</option>'.html_safe, :include_blank => true %> </p>
+        </div>
+
+        <div class = "span3">
+          <p> In Foster Care? </p>
+          <p> <%= select_tag :in_foster_care, '
+                                       <option>Yes</option>
+                                       <option>No</option>'.html_safe, :include_blank => true%> </p>
+        </div>
+</div> <!-- End ROW -->
+
+<h3> Other Information </h3>
+<div class = "row">
+        <div class = "span4 ">
+          <p> Allergy </p>
+          <p><%= select_tag :allergy, options_from_collection_for_select(Allergy.all, "id", "name"), :include_blank => true %></p>
+        </div>
+
+        <div class = "span4">
+          <p> Medication </p>
+          <p> <%= select_tag :medication, options_from_collection_for_select(Medication.all, "id", "name"), :include_blank => true %> </p>
+        </div>
+
+        <div class = "span3 ">
+          <p> Support Services </p>
+          <p> <%= select_tag :support_service, options_from_collection_for_select(SupportService.all, "id", "name"), :include_blank => true %> </p>
+        </div>
+</div> <!-- End ROW -->
+
+          </div></div></div>
+    </div>  
+
+  </div>
+
+    <%= submit_tag "Search", :name => nil %>
+<% end %> 
+
+
+
+    </div>
+
     <div class="tab-pane fade" id="add_new">
        <h3 align = "center"> Select Type of New Person </h3>
       <p>

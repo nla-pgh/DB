@@ -39,4 +39,9 @@ class Person < ActiveRecord::Base
 	accepts_nested_attributes_for :phone_numbers, :allow_destroy => true
 	accepts_nested_attributes_for :addresses, :allow_destroy => true
 	accepts_nested_attributes_for :emergency_contacts, :allow_destroy => true
+
+	def name
+		"#{last_name}, #{first_name}"
+	end
+
 end

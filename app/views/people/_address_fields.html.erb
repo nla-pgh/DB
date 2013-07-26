@@ -1,22 +1,8 @@
-<%= f.fields_for :addresses do |g| %>
   <tr class = "fields">
-    <%= g.hidden_field :person_id, :value => @person.id %>
-      <td>
-        <p> Street Address </p>
-        <%= g.text_field :street_addresas %>
-      </td>
-
-      <td>
-        <p> City </p>
-        <%= g.text_field :city %>
-      </td>
-
-      <td>
-        <p> Zip Code </p>
-        <%= g.text_field :zip_code %>
-      </td>
-      <td>
-        <%= g.link_to_remove "Remove", :class => 'btn btn-danger' %>
-      </td>
-   </tr>
-<% end %>
+    <!-- x icon to remove -->
+    <%= f.link_to_remove(raw("<i class='icon-remove'></i>")) %>
+    <!-- fields -->
+    <%= f.input :street_address %>
+    <%= f.input :city %>
+    <%= f.input :zip_code %>
+  </tr>

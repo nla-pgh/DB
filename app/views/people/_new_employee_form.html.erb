@@ -34,10 +34,14 @@
 <div class = "row">
 
   <table id ="addr", class = "span10 table table-striped">
-      <%= f.fields_for :addresses, :wrapper => false %>
-  </table>  
+              <%= f.simple_fields_for :addresses do |address_form| %>
+          <%= render :partial => "address_fields", :locals => { :f => address_form } %>
+        <% end %> 
 
- <%= f.link_to_add "Add A New Address", :addresses, :data => {:target => '#addr'}, :class => 'span4 btn btn-primary'%>
+  </table>  
+        <p>
+          <br /><%= f.link_to_add(raw("<i class='icon-plus icon-white'></i> Add Address"), :addresses, :class => 'btn btn-mini btn-primary') %>
+        </p>
 </div>
         </div></div></div>
 
@@ -60,10 +64,14 @@
 <div class = "row">
 
   <table id ="phone_numbers", class = "span12 table table-striped">
-      <%= f.fields_for :phone_numbers, :wrapper => false %>
-  </table>
+        <%= f.simple_fields_for :phone_numbers do |phone_number_form| %>
+          <%= render :partial => "phone_number_fields", :locals => { :f => phone_number_form } %>
+        <% end %> 
 
- <%= f.link_to_add "Add A New Phone Number", :phone_numbers, :data => {:target => '#phone_numbers'}, :class => 'span4 btn btn-primary'%>
+  </table>  
+        <p>
+          <br /><%= f.link_to_add(raw("<i class='icon-plus icon-white'></i> Add Phone Number"), :phone_numbers, :class => 'btn btn-mini btn-primary') %>
+        </p>
 </div>
 
         </div></div></div>
@@ -82,14 +90,17 @@
 <div class = "row">
 
   <table id ="availabilities", class = "span12 table table-striped">
-      <%= f.fields_for :availabilities, :wrapper => false %>
-  </table>
+        <%= f.simple_fields_for :availabilities do |availabilities_form| %>
+          <%= render :partial => "availability_fields", :locals => { :f => availabilities_form } %>
+        <% end %> 
 
-  <%= f.link_to_add "Add An Availability", :availabilities, :data => {:target => '#availabilities'}, :class => 'span4 btn btn-primary'%>
+  </table>  
+        <p>
+          <br /><%= f.link_to_add(raw("<i class='icon-plus icon-white'></i> Add Availability"), :availabilities, :class => 'btn btn-mini btn-primary') %>
+        </p>
 </div>
 
         </div></div></div>        
-
 
     <div class="accordion-group">
       <div class="accordion-heading">
@@ -105,10 +116,14 @@
 <div class = "row">
 
   <table id ="emergency_contacts", class = "span12 table table-striped">
-      <%= f.fields_for :emergency_contacts, :wrapper => false %>
-  </table>
+        <%= f.simple_fields_for :emergency_contacts do |emergency_contact_form| %>
+          <%= render :partial => "emergency_contact_fields", :locals => { :f => emergency_contact_form } %>
+        <% end %> 
 
-  <%= f.link_to_add "Add An Emergency Contact", :emergency_contacts, :data => {:target => '#emergency_contacts'}, :class => 'span4 btn btn-primary'%>
+  </table>  
+        <p>
+          <br /><%= f.link_to_add(raw("<i class='icon-plus icon-white'></i> Add Emergency Contact"), :emergency_contacts, :class => 'btn btn-mini btn-primary') %>
+        </p>
 </div>
 
         </div></div></div>        
@@ -119,3 +134,5 @@
 
 <%= f.submit nil, :class => 'btn btn-primary' %>
 <% end %>
+
+

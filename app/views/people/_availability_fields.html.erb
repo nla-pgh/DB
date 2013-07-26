@@ -1,24 +1,8 @@
-<%= f.fields_for :availabilities do |g| %>
-  <tr class = "fields">
-    <%= g.hidden_field :person_id, :value => @person.id %>
-      <td>
-        <p> Day of the Week </p>
-        <%= g.select :day_of_week, [['Please Select', nil],['Monday', 0],['Tuesday', 1],['Wednesday', 2],['Thursday', 3],['Friday', 4],['Saturday', 5],['Sunday', 6]] %>
-      </td>
-
-      <td>
-        <p> Start Time </p>
-        <%= g.time_field :start_time, :label => false, :ampm => true %>
-      </td>
-
-      <td>
-        <p> End Time </p>
-        <%= g.time_field :end_time %>
-      </td>
-
-      <td>
-        <%= g.link_to_remove "Remove" , :class => 'btn btn-danger'%>
-      </td>
-   </tr>
-<% end %>
- 
+<tr class = "fields">
+    <!-- x icon to remove -->
+    <%= f.link_to_remove(raw("<i class='icon-remove'></i>")) %>
+    <!-- fields -->
+    <%= f.input :day_of_week, :collection => [['Please Select', nil],['Monday', 0],['Tuesday', 1],['Wednesday', 2],['Thursday', 3],['Friday', 4],['Saturday', 5],['Sunday', 6]] %>
+    <%= f.input :start_time, :label => false, :ampm => true %>
+    <%= f.input :end_time, :label => false, :ampm => true %>
+</tr>

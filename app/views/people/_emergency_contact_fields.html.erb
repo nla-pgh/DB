@@ -1,24 +1,8 @@
-<%= f.fields_for :emergency_contacts do |emergency_contact| %>
-  <tr class = "fields">
-    <%= emergency_contact.hidden_field :person_id, :value => @person.id %>
-
-        <td>
-            <p> Name </p>
-            <%= emergency_contact.text_field :name %>
-        </td>
-
-    	<td>
-    		<p> Phone Number </p>
-    		<%= emergency_contact.text_field :phone, :placeholder => 'xxx-xxx-xxxx' %>
-    	</td>
-
-    	<td>
-    		<p> Relationship </p>
-    		<%= emergency_contact.text_field :relationship %>
-    	</td>
-
-    	<td>
-    		<%= emergency_contact.link_to_remove "Remove" , :class => 'btn btn-danger'%>
-    	</td>
-   </tr>
-<% end %>
+<tr class = "fields">
+    <!-- x icon to remove -->
+    <%= f.link_to_remove(raw("<i class='icon-remove'></i>")) %>
+    <!-- fields -->
+    <%= f.input :name %>
+    <%= f.input :phone %>
+    <%= f.input :relationship %>
+</tr>

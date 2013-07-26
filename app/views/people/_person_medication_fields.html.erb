@@ -1,19 +1,7 @@
-<%= f.fields_for :person_medications do |g| %>
-  <tr class = "fields">
-    <%= g.hidden_field :person_id, :value => @person.id %>
-      <td>
-        <p> Allergy </p>
-        <%= g.collection_select :medication_id, Medication.all.order('name'), :id, :name %>
-      </td> 
-
-      <td>
-        <p> Comments </p>
-        <%= g.text_area :comments %>
-      </td>
-
-      <td>
-        <%= g.link_to_remove "Remove" , :class => 'btn btn-danger'%>
-      </td>
-   </tr>
-<% end %>
- 
+<tr class = "fields">
+    <!-- x icon to remove -->
+    <%= f.link_to_remove(raw("<i class='icon-remove'></i>")) %>
+    <!-- fields -->
+    <%= f.input :medication_id, :collection => Medication.all.order('name') %>
+    <%= f.input :comments %>
+</tr>

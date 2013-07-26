@@ -1,18 +1,7 @@
-<%= f.fields_for :person_supports do |g| %>
-  <tr class = "fields">
-    <%= g.hidden_field :person_id, :value => @person.id %>
-      <td>
-        <p> Support Service </p>
-        <%= g.collection_select :support_service_id, SupportService.all.order('name'), :id, :name %>
-      </td> 
-
-      <td>
-        <p> Comments </p>
-        <%= g.text_area :comments %>
-      </td>
-
-      <td>
-        <%= g.link_to_remove "Remove" , :class => 'btn btn-danger'%>
-      </td>
-   </tr>
-<% end %>
+<tr class = "fields">
+    <!-- x icon to remove -->
+    <%= f.link_to_remove(raw("<i class='icon-remove'></i>")) %>
+    <!-- fields -->
+    <%= f.input :support_service_id, :collection => SupportService.all.order('name') %>
+    <%= f.input :comments %>
+</tr>

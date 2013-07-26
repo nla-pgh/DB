@@ -67,6 +67,14 @@ class PeopleController < ApplicationController
   def new_person
     @type = params[:type]
     @person = Person.new
+    @person.addresses.build
+    @person.availabilities.build
+    @person.emergency_contacts.build
+    @person.person_allergies.build
+    @person.person_medications.build
+    @person.person_schools.build
+    @person.person_supports.build
+    @person.phone_numbers.build
   end
   # GET /people
   # GET /people.json
@@ -146,6 +154,6 @@ class PeopleController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def person_params
-      params.require(:person).permit(:first_name, :last_name, :gender, :DOB, :race, :email, :parent_id, :household_number_of_members, :in_foster_care, :school_lunch_program, :clinic_name, :clinic_street_address, :clinic_city, :clinic_state, :clinic_zip_code, :clinic_phone_number, :position, :active)
+      params.require(:person).permit!
     end
 end

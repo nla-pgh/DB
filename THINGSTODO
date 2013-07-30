@@ -14,9 +14,11 @@ JESSIE PREFERS TO HAVE THE OPTION OF UNKNOWN FOR ANY DROP DOWNS FOR STUDENT FORM
 
 * Phone Call classes
 
-list of all enrolled students in the program X
+parent needs separate search
+list of all enrolled students in the program X (sort of.)
 a specific students' attendance
 if student misses a day, automatically create phone call
+
 
 authentication (multiple type of accounts)
 

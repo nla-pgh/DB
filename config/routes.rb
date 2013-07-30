@@ -4,6 +4,9 @@ StartAgain::Application.routes.draw do
 
   post 'people/new_person' => 'people#new_person', :as => "select_new_person_type"
   post 'people/search_people' => 'people#search', :as => "person_search"
+  post 'programs/new_program' => 'programs#new_program', :as => "select_new_program_type"
+  post 'programs/search_programs' => 'programs#search', :as => "program_search"
+  post 'programs/show_all' => 'programs#show_all', :as => "program_show_all"
 
   resources :allergies
 

@@ -1,33 +1,61 @@
-<%- model_class = Program -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+
+
+<h1 align ="center"> Programs </h1>
+
+<div class = "container">
+
+  <ul id="myTab" class="nav nav-tabs">
+    <li class="active"><a href="#show_all" data-toggle="tab">Show All</a></li>
+    <li class=""><a href="#search" data-toggle="tab">Search</a></li>
+    <li class=""><a href="#add_new" data-toggle="tab">Add New</a></li>
+  </ul>
+
+    <div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade active in" id="show_all">
+    <div class="accordion" id="accordion">
+
+      <% @programs.each do|program| %>
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#general">
+            <%= program.name %>
+            </a>
+          </div>
+        <div style="height: 0;" id="general" class="accordion-body collapse">
+          <div class="accordion-inner">
+            <div class = "row">
+              <div class = "span8 ">
+                <p> Description: <%= program.description %></p>
+              </div>  
+            </div> <!-- End ROW -->
+
+            <div class = "row">
+              <div class = "span12">
+            <%= render :partial => "program_locations" %>
+              </div>
+              <% end %>
+            </div>
+          </div></div></div>
+  </div>
 </div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @programs.each do |program| %>
-      <tr>
-        <td><%= link_to program.name, program_path(program) %></td>
-        <td><%= program.description %></td>
-        <td><%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_program_path(@program), :class => 'btn btn-mini' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              program_path(@program),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-mini btn-danger' %></td>
 
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <div class="tab-pane fade active in" id="search">
+<!-- Searching Goes Here -->
+    </div>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_program_path,
-            :class => 'btn btn-primary' %>
+    <div class="tab-pane fade" id="add_new">
+       <h3 align = "center"> Select New </h3>
+      <p>
+        <!-- Probably put Programs and Program Locations and Enrollments? Or can we only make them on specific pages? -->
+
+        <%= link_to "Program", new_program_path, :class => 'btn btn-primary', :id => 'Create Program' %>
+        <br>
+        <br>
+        <%= link_to "Program Location", new_program_location_path, :class => 'btn btn-primary', :id => 'Create Program Location' %>
+        <br>
+        <br>
+        <%= link_to "Program Enrollment", new_program_enrollment_path, :class => 'btn btn-primary', :id => 'Create Program Enrollment' %>
+      </p>
+    </div>
+  </div>
+</div>

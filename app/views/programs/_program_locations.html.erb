@@ -1,4 +1,5 @@
-<% if @program_locations.empty? %>
+<% @programs.each do|program| %>
+<% if program.program_locations.empty? %>
   <p>&nbsp;&nbsp;<em>No Program Locations at this time</em></p>
   <p>&nbsp;</p>
   
@@ -7,17 +8,15 @@
     <thead>
       <tr>
         <th>Name</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
-      <% @program_locations.each do |program_location| %>
+      <% program.program_locations.each do |program_location| %>
         <tr>
           <td><%= link_to program_location.name, program_location_path(program_location) %></td>
-          <td><%= link_to "Attendance", program_dates_path(:id => program_location.id), :class => 'btn btn-mini' %>
-          <%= link_to "Enrollment", program_location_path(@program), :class => 'btn btn-mini' %>
-
-
-
+          <td><%= link_to "Attendance", program_dates_path(:id => program_location.id), :class => 'btn btn-mini' %>           
+          <%= link_to "Enrollment", program_location_path(program), :class => 'btn btn-mini' %>
           <%= link_to "Employees", program_location_program_employees_path(:id => program_location.id), :class => 'btn btn-mini' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_program_location_path(program_location), :class => 'btn btn-mini' %>
@@ -32,4 +31,5 @@
       <% end %>
     </tbody>
   </table>
+<% end %>
 <% end %>

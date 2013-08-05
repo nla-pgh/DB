@@ -13,6 +13,9 @@
             <% @program_enrollments.each do |enrollment|%>
         <tr>
           <td><%= link_to enrollment.person.name, people_path(@person) %></td>
+          <% for enrollment_course in EnrollmentCourse.where(:program_enrollment_id => enrollment.id) %>
+          <td><%= enrollment_course %></td>
+          <% end %>
           <td><%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       program_enrollment_path(enrollment),
                       :method => :delete,

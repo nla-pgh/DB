@@ -1,0 +1,177 @@
+<div class="container">
+  <div class="accordion" id="accordion">
+
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#basicStudentInfo">
+          Student Information
+        </a>
+      </div>
+      <div style="height: 0;" id="basicStudentInfo" class="accordion-body collapse">
+        <div class="accordion-inner">
+
+<div class = "row">
+        <div class = "span4">
+          <p> Race</p>
+          <p> <%= @person.race %> </p>
+        </div>
+
+        <div class = "span3">
+          <p> In Foster Care? </p>
+          <p> <%= @person.in_foster_care %> </p>
+        </div>
+</div>
+
+<div class = "row">
+        <div class = "span4">
+          <p> Number of Members in Household </p>
+          <p> <%= @person.household_number_of_members %> </p>
+        </div>
+
+        <div class = "span4">
+          <p> School Lunch Program </p>
+          <p> <%= @person.school_lunch_program %> </p>
+        </div>
+
+        <div class = "span3">
+          <p> Vegetarian? </p>
+          <p> <%= @person.vegetarian %> </p>
+        </div>
+</div>
+
+
+<div class = "row">
+
+  <table id ="addr", class = "span10 table table-striped">
+    <% @person.addresses do |address| %>
+      <%= address.street %>            
+    <% end %> 
+
+  </table>  
+</div>
+        </div></div></div>
+
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#contactInfo">
+          Contact Information
+        </a>
+      </div>
+      <div style="height: 0;" id="contactInfo" class="accordion-body collapse">
+        <div class="accordion-inner">
+
+<div class = "row">
+        <div class = "span8">
+          <p> Email </p>
+          <p> <%= @person.email %> </p>
+        </div>
+</div>
+<h3> Phone Numbers </h3>
+<div class = "row">
+
+  <table id ="phone_numbers", class = "span12 table table-striped">
+        <%= @person.phone_numbers do |phone_number| %>
+
+        <% end %> 
+
+  </table>  
+</div>
+
+        </div></div></div>
+
+
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#schoolInfo">
+          School Information
+        </a>
+      </div>
+      <div style="height: 0;" id="schoolInfo" class="accordion-body collapse">
+        <div class="accordion-inner">
+
+<div class = "row">
+        <div class = "span8">
+          <p> Current Grade in School </p>
+          <p> <%= @person.grade %> </p>
+        </div>
+</div>
+<h3> Schools </h3>
+<div class = "row">
+
+  <table id ="schools", class = "span12 table table-striped">
+              <%= @person.person_schools do |person_school| %>
+        <% end %> 
+
+  </table>  
+</div>
+        </div></div></div>
+
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#medicalInfo">
+          Medical Information
+        </a>
+      </div>
+      <div style="height: 0;" id="medicalInfo" class="accordion-body collapse">
+        <div class="accordion-inner">
+
+                  <h3> Allergies </h3>
+
+<div class = "row">
+
+  <table id ="allergies", class = "span12 table table-striped">
+              <%= @person.person_allergies do |person_allergy| %>
+        <% end %> 
+
+  </table>  
+</div>
+
+                  <h3> Medications </h3>
+
+<div class = "row">
+
+  <table id ="medications", class = "span12 table table-striped">
+              <%= @person.person_medications do |person_medication| %>
+        <% end %> 
+
+  </table>  
+</div>
+
+                  <h3> Support Services </h3>
+
+<div class = "row">
+
+  <table id ="supports", class = "span12 table table-striped">
+              <%= @person.person_supports do |person_support| %>
+        <% end %> 
+
+  </table>
+</div>
+
+        </div></div></div>
+
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#emergencycontactInfo">
+          Emergency Contacts
+        </a>
+      </div>
+      <div style="height: 0;" id="emergencycontactInfo" class="accordion-body collapse">
+        <div class="accordion-inner">
+
+                  <h3> Emergency Contacts </h3>
+
+<div class = "row">
+
+  <table id ="emergency_contacts", class = "span12 table table-striped">
+              <%= @person.emergency_contacts do |emergency_contact| %>
+        <% end %> 
+
+  </table> 
+</div>
+
+        </div></div></div>        
+
+</div>
+
+</div>

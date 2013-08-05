@@ -27,6 +27,9 @@ class Person < ActiveRecord::Base
 	has_many :events, through: :event_employees
 	has_many :event_employees
 
+	has_many :program_locations, through: :program_employees
+	has_many :program_employees
+
 	accepts_nested_attributes_for :address, :allow_destroy => true
 	accepts_nested_attributes_for :addresses, :allow_destroy => true
 	accepts_nested_attributes_for :person_schools, :allow_destroy => true

@@ -1,0 +1,7 @@
+  <tr class = "fields">
+    <!-- x icon to remove -->
+    <!-- fields -->
+    <%= f.collection_select :event_id, Event.all, :id, :name %>
+    
+    <%= f.link_to_remove "Remove" %>
+  </tr>

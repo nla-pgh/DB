@@ -1,4 +1,9 @@
 StartAgain::Application.routes.draw do
+  get 'log_in' => 'sessions#new'
+  get 'log_out' => 'sessions#destroy'
+  resources :sessions, :only => [:new, :create, :destroy]
+
+  resources :users
 
   resources :people
 
@@ -19,6 +24,10 @@ StartAgain::Application.routes.draw do
   resources :forms
 
   resources :event_employees
+
+  resources :enrollment_courses
+
+  resources :novanet_courses
 
   post 'events/edit_attendees' => 'events#edit_attendees', :as => "event_edit_attendees"
   get 'events/add_attendees' => 'events#add_attendees', :as => "event_add_attendees"
@@ -60,7 +69,7 @@ StartAgain::Application.routes.draw do
   get 'home' => 'home#index', :as => 'home_path'
 
   # Set the root url
-  root :to => 'home#index'
+  root :to => 'sessions#new'
 
   # Last route in routes.rb that essentially handles routing errors
   get '*a', :to => 'errors#routing'

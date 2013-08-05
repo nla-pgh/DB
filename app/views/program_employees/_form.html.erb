@@ -1,6 +1,6 @@
 <%= simple_form_for @program_employee, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :program_location_id %>
-  <%= f.input :person_id %>
+  <p><%= f.collection_select(:program_location_id, ProgramLocation.all, :id, :name)%>
+    <p><%= f.collection_select(:person_id, Person.all, :id, :first_name)%>
   <%= f.input :job_description %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>

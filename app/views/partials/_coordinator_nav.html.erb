@@ -1,0 +1,5 @@
+	<ul class="nav nav-tabs nav-stacked">
+		<li class="nav-header">Navigation</li>
+		<li class="<%= 'active' if current_page?(events_path) %>"><%= link_to "Events", events_path %></li>
+		<li class="<%= 'active' if current_page?(programs_path) %>"><%= link_to "Programs", programs_path %></li>
+	</ul>

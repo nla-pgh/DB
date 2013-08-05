@@ -1,0 +1,29 @@
+<h1>Listing enrollment_courses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Program enrollments</th>
+      <th>Novanet courses</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @enrollment_courses.each do |enrollment_course| %>
+      <tr>
+        <td><%= enrollment_course.program_enrollment.person.name %></td>
+        <td><%= enrollment_course.novanet_course.name %></td>
+        <td><%= link_to 'Show', enrollment_course %></td>
+        <td><%= link_to 'Edit', edit_enrollment_course_path(enrollment_course) %></td>
+        <td><%= link_to 'Destroy', enrollment_course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Enrollment course', new_enrollment_course_path %>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NLA Admin</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+
+<table>
+	<tr>
+		<td>
+			<h4> Logged in as Admin </h4>
+			<h4>  <%= link_to "Log Out", '/log_out', class: "btn btn-primary" %> </h4>
+			<div class= "navigation">
+				<%= render :partial => "partials/admin_nav" %>
+			</div>
+		</td>
+		<td>
+			<%= yield %>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

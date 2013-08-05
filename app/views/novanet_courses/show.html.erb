@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @novanet_course.name %>
+</p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @novanet_course.subject %>
+</p>
+
+<%= link_to 'Edit', edit_novanet_course_path(@novanet_course) %> |
+<%= link_to 'Back', novanet_courses_path %>

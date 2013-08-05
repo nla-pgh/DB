@@ -1,0 +1,29 @@
+<h1>Listing novanet_courses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Subject</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @novanet_courses.each do |novanet_course| %>
+      <tr>
+        <td><%= novanet_course.name %></td>
+        <td><%= novanet_course.subject %></td>
+        <td><%= link_to 'Show', novanet_course %></td>
+        <td><%= link_to 'Edit', edit_novanet_course_path(novanet_course) %></td>
+        <td><%= link_to 'Destroy', novanet_course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Novanet course', new_novanet_course_path %>

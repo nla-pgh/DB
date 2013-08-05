@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130722191021) do
+ActiveRecord::Schema.define(version: 20130805162143) do
 
   create_table "addresses", force: true do |t|
     t.integer  "person_id"
@@ -53,6 +53,40 @@ ActiveRecord::Schema.define(version: 20130722191021) do
 
   add_index "emergency_contacts", ["person_id"], name: "index_emergency_contacts_on_person_id", using: :btree
 
+  create_table "enrollment_courses", force: true do |t|
+    t.integer  "program_enrollment_id"
+    t.integer  "novanet_course_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "completed"
+  end
+
+  create_table "event_employees", force: true do |t|
+    t.integer  "event_id"
+    t.integer  "person_id"
+    t.string   "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "event_employees", ["event_id"], name: "index_event_employees_on_event_id", using: :btree
+  add_index "event_employees", ["person_id"], name: "index_event_employees_on_person_id", using: :btree
+
+  create_table "events", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "kind"
+    t.string   "location"
+    t.string   "street_address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip_code"
+    t.string   "time"
+    t.string   "comments"
+    t.datetime "date"
+  end
+
   create_table "forms", force: true do |t|
     t.string   "name"
     t.string   "description"
@@ -71,6 +105,13 @@ ActiveRecord::Schema.define(version: 20130722191021) do
 
   create_table "medications", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "novanet_courses", force: true do |t|
+    t.string   "name"
+    t.string   "subject"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -96,6 +137,11 @@ ActiveRecord::Schema.define(version: 20130722191021) do
     t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "grade"
+    t.boolean  "vegetarian"
+    t.string   "other_food_needs"
+    t.string   "physical_impairments"
+    t.string   "comments"
   end
 
   create_table "person_allergies", force: true do |t|
@@ -109,6 +155,21 @@ ActiveRecord::Schema.define(version: 20130722191021) do
 
   add_index "person_allergies", ["allergy_id"], name: "index_person_allergies_on_allergy_id", using: :btree
   add_index "person_allergies", ["person_id"], name: "index_person_allergies_on_person_id", using: :btree
+
+  create_table "person_events", force: true do |t|
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "person_id"
+    t.boolean  "contacted"
+    t.boolean  "responded"
+    t.boolean  "attending"
+    t.boolean  "attended"
+    t.boolean  "paid"
+    t.string   "notes"
+  end
+
+  add_index "person_events", ["event_id"], name: "index_person_events_on_event_id", using: :btree
 
   create_table "person_interests", force: true do |t|
     t.integer  "person_id"
@@ -186,6 +247,70 @@ ActiveRecord::Schema.define(version: 20130722191021) do
 
   add_index "phone_numbers", ["person_id"], name: "index_phone_numbers_on_person_id", using: :btree
 
+  create_table "program_attendances", force: true do |t|
+    t.integer  "program_enrollment_id"
+    t.integer  "program_date_id"
+    t.string   "status"
+    t.string   "comments"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "program_attendances", ["program_date_id"], name: "index_program_attendances_on_program_date_id", using: :btree
+  add_index "program_attendances", ["program_enrollment_id"], name: "index_program_attendances_on_program_enrollment_id", using: :btree
+
+  create_table "program_dates", force: true do |t|
+    t.integer  "program_id"
+    t.date     "date"
+    t.string   "status"
+    t.string   "comments"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "program_dates", ["program_id"], name: "index_program_dates_on_program_id", using: :btree
+
+  create_table "program_employees", force: true do |t|
+    t.integer  "program_location_id"
+    t.integer  "person_id"
+    t.string   "job_description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "program_employees", ["program_location_id"], name: "index_program_employees_on_program_location_id", using: :btree
+
+  create_table "program_enrollments", force: true do |t|
+    t.integer  "program_location_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "person_id"
+  end
+
+  add_index "program_enrollments", ["program_location_id"], name: "index_program_enrollments_on_program_location_id", using: :btree
+
+  create_table "program_locations", force: true do |t|
+    t.integer  "program_id"
+    t.string   "name"
+    t.string   "address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip_code"
+    t.string   "street_address"
+    t.boolean  "active"
+  end
+
+  add_index "program_locations", ["program_id"], name: "index_program_locations_on_program_id", using: :btree
+
+  create_table "programs", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "role_forms", force: true do |t|
     t.integer  "role_id"
     t.integer  "form_id"
@@ -202,8 +327,53 @@ ActiveRecord::Schema.define(version: 20130722191021) do
     t.datetime "updated_at"
   end
 
+  create_table "schools", force: true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "support_services", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_events", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_events", ["event_id"], name: "index_user_events_on_event_id", using: :btree
+  add_index "user_events", ["user_id"], name: "index_user_events_on_user_id", using: :btree
+
+  create_table "user_people", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "person_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_people", ["person_id"], name: "index_user_people_on_person_id", using: :btree
+  add_index "user_people", ["user_id"], name: "index_user_people_on_user_id", using: :btree
+
+  create_table "user_program_locations", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "program_location_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_program_locations", ["program_location_id"], name: "index_user_program_locations_on_program_location_id", using: :btree
+  add_index "user_program_locations", ["user_id"], name: "index_user_program_locations_on_user_id", using: :btree
+
+  create_table "users", force: true do |t|
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "kind"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

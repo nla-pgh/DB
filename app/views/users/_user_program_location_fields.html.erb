@@ -1,0 +1,6 @@
+  <tr class = "fields">
+	    <!-- x icon to remove -->
+	    <%= f.link_to_remove "Remove"%>
+	    <!-- fields -->
+		<%= f.collection_select :program_location_id, ProgramLocation.all, :id, :name %>
+	</tr>

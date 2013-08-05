@@ -1,30 +1,51 @@
-Searches (advanced search, availability)
+X Searches (advanced search, availability)
 reports (phone calls)
 
-help button on index
-programs (prettier...?)
-people search result link
-create methods?
+DO SHOW PAGES FOR PEOPLE
 
+novanet_courses
+- id
+- one program has many novanet_courses
+- novanet_course_programs middle
+- one novanet_course has many program
+- program_id
+- class_name
+- registered_on_pearson
+- modules completed
+- comments (how they're doing)
+- novanet reports? should we have all the columns that are in reports?
 
-JESSIE PREFERS TO HAVE THE OPTION OF UNKNOWN FOR ANY DROP DOWNS FOR STUDENT FORMS
+Sarah:
+- form layouts
+- home pages of users (designing)
+- help button on index
+- mass adding (do search and checkbox menu type thing)
+- design suggestions for the website
+- non-maximized window resizing of content
+- also, jessie wanted the option of "unknown" in dropdown boxes, so if you could replace the null options or options that are arrays with a second element of '0' with 'Unknown' that would be helpful. 
+(I don't want to change it on mine and then copy paste over it with yours, which does not have this feature.) 
 
+Thank :D
 
+QUESTION:
+SUGGESTION OF ORGANIZATION OF PHONE CALLS
+
+* add program enrollment ( list of people, check boxes, submit once )
 * Novanet [separate from programs]
 
 * Phone Call classes
 
-parent needs separate search
-list of all enrolled students in the program X (sort of.)
+
+X (sort of.) list of all enrolled students in the program 
 a specific students' attendance
 if student misses a day, automatically create phone call
 
+Yada:
 
 authentication (multiple type of accounts)
+parent needs separate search
 
-?still applicable? other_people - fix it or some shit
 
-History (student schools)
 hotlink everything
 Mass Data Editing (select_all) javascript
 set types for events (talk to rachel & jessie)

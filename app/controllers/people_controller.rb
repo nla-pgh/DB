@@ -99,20 +99,14 @@ class PeopleController < ApplicationController
   # POST /people.json
   def create
     @person = Person.new(person_params)
-    # @person_role = PersonRole.new
-    # @person_role.person_id = @person.id
-    # if @type == 'student'
-    #   @person_role.role_id = 0
-    # elsif @type == 'employee'
-    #   @person_role.role_id = 1
-    # elsif @type == 'volunteer'
-    #   @person_role.role_id = 2  
-    # else @type == 'employee'
-    #   @person_role.role_id = 3 
-    # end
+    role = Role.where(:name => params[:type]).first
+    personrole = PersonRole.new
+    personrole.role_id = role.id
 
     respond_to do |format|
       if @person.save
+        personrole.person_id = @person.id
+        personrole.save
         format.html { redirect_to @person, notice: 'Person was successfully created.' }
         format.json { render action: 'show', status: :created, location: @person }
       else

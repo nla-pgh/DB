@@ -1,0 +1,17 @@
+<h1> Information </h1>
+
+<%= render :partial => 'show_person' %>
+
+<% for person_role in @person.person_roles %>
+	<% if person_role.role.name == 'Student' %>
+		<%= render :partial => 'show_student' %>
+	<% elsif person_role.role.name == 'Employee' %>
+		<%= render :partial => 'show_partials/_show_employee' %>
+	<% elsif person_role.role.name == 'Volunteer' %>
+		<%= render :partial => 'show_partials/_show_volunteer' %>
+	<% elsif person_role.role.name == 'Other' %>
+		<%= render :partial => 'show_partials/_show_other' %>
+	<% else %>
+		<h1> The information could not be loaded </h1>
+	<% end %>
+<% end %>

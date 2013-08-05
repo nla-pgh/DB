@@ -1,0 +1,11 @@
+	<ul class="nav nav-tabs nav-stacked">
+	  <li class="nav-header">Navigation</li>
+	  <li class="<%= 'active' if current_page?(controller: 'home', action: 'index') %>"><%= link_to "Home", '/home#index' %></li>
+	  <li class="<%= 'active' if current_page?(people_path) %>"><%= link_to "People", people_path %></li>
+	  <li class="<%= 'active' if current_page?(schools_path) %>"><%= link_to "Schools", schools_path %></li>
+	  <li class="<%= 'active' if current_page?(events_path) %>"><%= link_to "Events", events_path %></li>
+	  <li class="<%= 'active' if current_page?(programs_path) %>"><%= link_to "Programs", programs_path %></li>
+	  <li class="<%= 'active' if current_page?(roles_path) %>"><%= link_to "Roles And Forms?", roles_path %></li>
+	  <li class="<%= 'active' if current_page?(reports_path) %>"><%= link_to "Reports", reports_path %></li>
+  	  <li class="<%= 'active' if current_page?(users_path) %>"><%= link_to "Users", users_path %></li>
+	</ul>

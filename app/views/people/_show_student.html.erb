@@ -1,6 +1,3 @@
-<div class="container">
-  <div class="accordion" id="accordion">
-
     <div class="accordion-group">
       <div class="accordion-heading">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#basicStudentInfo">
@@ -38,45 +35,6 @@
           <p> <%= @person.vegetarian %> </p>
         </div>
 </div>
-
-
-<div class = "row">
-
-  <table id ="addr", class = "span10 table table-striped">
-    <% @person.addresses do |address| %>
-      <%= address.street %>            
-    <% end %> 
-
-  </table>  
-</div>
-        </div></div></div>
-
-    <div class="accordion-group">
-      <div class="accordion-heading">
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#contactInfo">
-          Contact Information
-        </a>
-      </div>
-      <div style="height: 0;" id="contactInfo" class="accordion-body collapse">
-        <div class="accordion-inner">
-
-<div class = "row">
-        <div class = "span8">
-          <p> Email </p>
-          <p> <%= @person.email %> </p>
-        </div>
-</div>
-<h3> Phone Numbers </h3>
-<div class = "row">
-
-  <table id ="phone_numbers", class = "span12 table table-striped">
-        <%= @person.phone_numbers do |phone_number| %>
-
-        <% end %> 
-
-  </table>  
-</div>
-
         </div></div></div>
 
 
@@ -171,7 +129,3 @@
 </div>
 
         </div></div></div>        
-
-</div>
-
-</div>

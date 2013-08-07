@@ -71,4 +71,34 @@ td.centered {
 	background-image: url("./img/glyphicons-halflings-white.png");
 }
 
+.page-header {
+	position:fixed;
+		top: -15px; 
+		left:300px; 
+		text-transform:uppercase; 
+	}
+
+.bigContainerNav{
+	position:fixed;
+	top:106px;
+	left:200px;
+}
+
+.bigContainer{
+	position:fixed;
+	top:106px;
+	left:200px;
+}
+
+.scootThis{
+	position:relative;
+	left:23px;
+}
+			 
+.login{
+	position:absolute;
+	left:100px;
+	top:100px;
+}  
+
 

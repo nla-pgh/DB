@@ -7,14 +7,21 @@
     <thead>
       <tr>
         <th>Name</th>
+        <% if @program_location.id == 1 %>
+        <th>Novanet Courses</th>
+        <% end %>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
             <% @program_enrollments.each do |enrollment|%>
         <tr>
           <td><%= link_to enrollment.person.name, people_path(@person) %></td>
-          <% for enrollment_course in EnrollmentCourse.where(:program_enrollment_id => enrollment.id) %>
-          <td><%= enrollment_course %></td>
+          <% if @program_location.id == 1 %> 
+            <td>
+              <% for enrollment_course in EnrollmentCourse.where(:program_enrollment_id => enrollment.id) %><%= enrollment_course.novanet_course.name %>, 
+              <% end %>
+            </td>
           <% end %>
           <td><%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       program_enrollment_path(enrollment),

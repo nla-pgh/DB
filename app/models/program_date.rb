@@ -3,6 +3,6 @@ class ProgramDate < ActiveRecord::Base
 	STATUS_OPTIONS = ['present', 'late', 'absent']
 
   belongs_to :program_location
-  has_many :program_attendances
+  has_many :program_attendances, :dependent => :destroy
 
 end

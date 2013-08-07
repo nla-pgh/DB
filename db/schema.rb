@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130805162143) do
+ActiveRecord::Schema.define(version: 20130807144808) do
 
   create_table "addresses", force: true do |t|
     t.integer  "person_id"
@@ -142,6 +142,7 @@ ActiveRecord::Schema.define(version: 20130805162143) do
     t.string   "other_food_needs"
     t.string   "physical_impairments"
     t.string   "comments"
+    t.string   "tag"
   end
 
   create_table "person_allergies", force: true do |t|

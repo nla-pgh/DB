@@ -12,21 +12,67 @@
 
 <div class = "row">
         <div class = "span8">
-          <p> Name </p>
-          <p> <%= @person.first_name + ' ' + @person.last_name %> </p>
+          <p><b>Name:</b> <%= @person.first_name + ' ' + @person.last_name %> </p>
         </div>
         <div class = "span3">
-          <p> Gender </p>
-          <p> <%= @person.gender %> </p>
+          <p><b>Gender:</b> <%= @person.gender ? "Male" : "Female" %> </p>
         </div>
 </div>
 
 <div class = "row">
 
         <div class = "span4">
-          <p> Date of Birth </p>
-          <p> <%= @person.DOB %> </p>
+          <p><b>Date of Birth:</b> <%= @person.DOB %> </p>
         </div>
+</div>
+
+<div class = "row">
+
+  <table id ="addr", class = "span10 table table-striped">
+    <% if @person.addresses.length() > 1 %>
+      No addresses given
+      lenth is<% @person.addresses.length() %>
+    <% else %>
+      addresses exist
+    <% end %>
+    <% @person.addresses do |address| %>
+      Address: <%= address.street %>            
+    <% end %> 
+
+  </table>  
+</div>
+        </div></div></div>
+
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#contactInfo">
+          Contact Information
+        </a>
+      </div>
+      <div style="height: 0;" id="contactInfo" class="accordion-body collapse">
+        <div class="accordion-inner">
+
+<div class = "row">
+        <div class = "span8">
+          <p> Email </p>
+          <p> <%= @person.email %> </p>
+        </div>
+</div>
+<h3> Phone Numbers </h3>
+<div class = "row">
+
+  <table id ="phone_numbers", class = "span12 table table-striped">
+        <%= @person.phone_numbers do |phone_number| %>
+
+        <% end %> 
+
+  </table>  
+</div>
+
+
+
+
+
         
         </div></div></div>        
 

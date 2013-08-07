@@ -1,7 +1,9 @@
-<div class="page-header">
-  <h1>Programs</h1>
+
+
+<div class="page-header"><h1> Programs </h1>
 </div>
 
+<div class="bigContainerNav">
 <div class = "container">
 
   <ul id="myTab" class="nav nav-tabs">
@@ -18,12 +20,12 @@
   </div>
 
     <div class="tab-pane fade active in" id="search">
-<!-- Searching Goes Here -->
+        <!--search here-->
+    
     </div>
 
     <div class="tab-pane fade" id="add_new">
-       <h3 align = "center"> Select New </h3>
-      <p>
+       
         <!-- Probably put Programs and Program Locations and Enrollments? Or can we only make them on specific pages? -->
 
         <%= link_to "Program", new_program_path, :class => 'btn btn-primary', :id => 'Create Program' %>
@@ -39,7 +41,7 @@
         <br>
         <br>
         <%= link_to "Novanet Course", new_novanet_course_path, :class => 'btn btn-primary', :id => 'Create Novanet Course' %>
-      </p>
     </div>
   </div>
+</div>
 </div>

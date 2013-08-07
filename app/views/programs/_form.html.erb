@@ -1,4 +1,5 @@
-<%= simple_form_for @program, :html => { :class => 'form-horizontal' } do |f| %>
+<div class="bigContainer">
+	<%= simple_form_for @program, :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
   <div class="form-actions">
@@ -6,4 +7,5 @@
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 programs_path, :class => 'btn' %>
   </div>
+</div>
 <% end %>

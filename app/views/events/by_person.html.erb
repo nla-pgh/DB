@@ -1,5 +1,7 @@
-<h2> The following matches were found </h2>
-
+<div class="page-header">
+	<h2> The following matches were found </h2>
+</div>
+<div class="bigContainer">
 <% @people.each do |person| %>
 
 	<h3 align="center"> Events Attended By <%= person.first_name %> <%= person.last_name %> </h3>
@@ -24,5 +26,5 @@
 			<% end %>
 		</tbody>
 	</table>
-
+</div>
 <% end %>

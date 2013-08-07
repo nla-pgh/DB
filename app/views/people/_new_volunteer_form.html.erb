@@ -1,3 +1,4 @@
+<div class="bigContainer">
 <div class="container">
 <%= simple_nested_form_for @person, :html => { :class => 'form-horizontal' } do |f| %>
 <%= hidden_field_tag :type, @type %> 
@@ -13,7 +14,7 @@
         <div class="accordion-inner">
 
 <div class = "row">
-        <div class = "span8">
+        <div class = "span6">
           <p> First Name, Last Name </p>
           <p> <%= f.text_field :first_name %> <%= f.text_field :last_name %> </p>
         </div>
@@ -21,19 +22,19 @@
 
 <div class = "row">
 
-        <div class = "span4">
+        <div class = "span3">
           <p> Date of Birth </p>
           <p> <%= f.text_field :DOB, :placeholder => "YYYY-MM-DD" %> </p>
         </div>
 
-        <div class = "span4">
+        <div class = "span3">
           <p> Gender </p>
           <p> <%=f.select :gender , [['Select', nil],['Male',true],['Female',false]] %> </p>
         </div>
 </div>
 
 <div class = "row">
-
+<div class="scootThis">
   <table id ="addr", class = "span10 table table-striped">
               <%= f.simple_fields_for :addresses do |address_form| %>
           <%= render :partial => "address_fields", :locals => { :f => address_form } %>
@@ -43,6 +44,7 @@
         <p>
           <br /><%= f.link_to_add(raw("<i class='icon-plus icon-white'></i> Add Address"), :addresses, :class => 'btn btn-mini btn-primary') %>
         </p>
+</div>
 </div>
         </div></div></div>
 
@@ -61,9 +63,8 @@
           <p> <%= f.text_field :email %> </p>
         </div>
 </div>
-<h3> Phone Numbers </h3>
 <div class = "row">
-
+<div class="scootThis">
   <table id ="phone_numbers", class = "span12 table table-striped">
         <%= f.simple_fields_for :phone_numbers do |phone_number_form| %>
           <%= render :partial => "phone_number_fields", :locals => { :f => phone_number_form } %>
@@ -74,7 +75,7 @@
           <br /><%= f.link_to_add(raw("<i class='icon-plus icon-white'></i> Add Phone Number"), :phone_numbers, :class => 'btn btn-mini btn-primary') %>
         </p>
 </div>
-
+</div>
         </div></div></div>
 
     <div class="accordion-group">
@@ -86,10 +87,10 @@
       <div style="height: 0;" id="availabilityInfo" class="accordion-body collapse">
         <div class="accordion-inner">
 
-                  <h3> Availability </h3>
+                  
 
 <div class = "row">
-
+<div class="scootThis">
   <table id ="availabilities", class = "span12 table table-striped">
         <%= f.simple_fields_for :availabilities do |availabilities_form| %>
           <%= render :partial => "availability_fields", :locals => { :f => availabilities_form } %>
@@ -100,7 +101,7 @@
           <br /><%= f.link_to_add(raw("<i class='icon-plus icon-white'></i> Add Availability"), :availabilities, :class => 'btn btn-mini btn-primary') %>
         </p>
 </div>
-
+</div>
         </div></div></div>        
 
 
@@ -113,10 +114,10 @@
       <div style="height: 0;" id="formInfo" class="accordion-body collapse">
         <div class="accordion-inner">
 
-                  <h3> Emergency Contacts </h3>
+                 
 
 <div class = "row">
-
+<div class="scootThis">
   <table id ="emergency_contacts", class = "span12 table table-striped">
         <%= f.simple_fields_for :emergency_contacts do |emergency_contact_form| %>
           <%= render :partial => "emergency_contact_fields", :locals => { :f => emergency_contact_form } %>
@@ -127,7 +128,7 @@
           <br /><%= f.link_to_add(raw("<i class='icon-plus icon-white'></i> Add Emergency Contact"), :emergency_contacts, :class => 'btn btn-mini btn-primary') %>
         </p>
 </div>
-
+</div>
         </div></div></div>        
 
 </div>
@@ -136,3 +137,4 @@
 
 <%= f.submit nil, :class => 'btn btn-primary' %>
 <% end %>
+</div>

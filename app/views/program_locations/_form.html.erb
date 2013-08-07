@@ -1,4 +1,5 @@
-<%= simple_form_for @program_location, :html => { :class => 'form-horizontal' } do |f| %>
+<div class="bigContainer">
+  <%= simple_form_for @program_location, :html => { :class => 'form-horizontal' } do |f| %>
   <div> Program
     <%= f.collection_select(:program_id, Program.all, :id, :name) %>
   </div>
@@ -10,3 +11,4 @@
                 programs_path, :class => 'btn' %>
   </div>
 <% end %>
+</div>

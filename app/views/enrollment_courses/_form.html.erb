@@ -1,3 +1,4 @@
+<div class="bigContainer">
 <%= simple_form_for @enrollment_course, :html => { :class => 'form-horizontal' } do |f| %>
 <%= select_tag "people", options_from_collection_for_select(Person.all, "id", "name") %>
 <p>Novanet Classes:</p>
@@ -8,3 +9,4 @@
                 programs_path, :class => 'btn' %>
   </div>
 <% end %>
+</div>

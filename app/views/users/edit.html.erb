@@ -1,12 +1,16 @@
-<h1>Editing user</h1>
+<div class="page-header">
+	<h1>Editing user</h1>
+</div>
 
+<div class="bigContainer">
 <%= simple_form_for @user do |f| %>
-	<p> Email Address <%= f.text_field :email %> </p>
+	<p> Email Address <%= f.text_field :email %> </p><br>
 
 	<h3> Change Password </h3>
 
-	<p> New Password <%= f.password_field :password %>
-	<p> Confirm Password <%= f.password_field :password_confirmation %>
+	<p> New Password <%= f.password_field :password %></p>
+	<p> Confirm Password <%= f.password_field :password_confirmation %></p>
 
 	<%= f.submit %>
 <% end %>
+</div>

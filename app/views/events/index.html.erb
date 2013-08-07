@@ -1,108 +1,59 @@
+<%- model_class = Event -%>
+<script type="text/javascript" id="js">$(document).ready(function() {
+  // call the tablesorter plugin
+  $("table").tablesorter({
+  });
+}); </script>
+
 <div class="page-header">
   <h1>Events</h1>
 </div>
 
-<div class = "container">
+<div class="bigContainer">
+<table class="tablesorter-dropbox">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Date</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= link_to event.name, event_path(event) %></td>
+        <td><%= event.kind %></td>
+        <td><%= event.date %></td>
+        <td><%= event.location %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-  <ul id="myTab" class="nav nav-tabs">
-    <li class="active"><a href="#show_all" data-toggle="tab">Show All</a></li>
-    <li class="active"><a href="#search" data-toggle="tab">Search</a></li>
-    <li class=""><a href="#add_new" data-toggle="tab">Add New</a></li>
-  </ul>
-  <div id="myTabContent" class="tab-content">
-  
-  <div class="tab-pane fade active in" id="show_all">
-    <div class="accordion" id="accordion">
-      <%= render :partial => "show_all" %>
-    </div>
-  </div>
-
-    <div class="tab-pane fade" id="search">
-      <!-- Searching Goes Here -->
-    </div>
-
-      <div class="accordion-group">
-        <div class="accordion-heading">
-          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#event">
-            Event Information
-          </a>
-        </div>
-        <div style="height: 0;" id="event" class="accordion-body collapse">
-          <div class="accordion-inner">
-<h3> School </h3>
-<div class = "row">
-<!--         <div class = "span4 ">
-          <p> Allergy </p>
-          <p><%#= select_tag :allergy, options_from_collection_for_select(Allergy.all, "id", "name"), :include_blank => true %></p>
-        </div>
-
-        <div class = "span4">
-          <p> Medication </p>
-          <p> <%#= select_tag :medication, options_from_collection_for_select(Medication.all, "id", "name"), :include_blank => true %> </p>
-        </div>
-
-        <div class = "span3 ">
-          <p> Support Services </p>
-          <p> <%#= select_tag :support_service, options_from_collection_for_select(SupportService.all, "id", "name"), :include_blank => true %> </p>
-        </div> -->
-</div> <!-- End ROW -->
-
+<%= link_to 'New Event',
+            new_event_path,
+            :class => 'btn' %>
 <hr>
-
-<h3> Household Information </h3>
-<div class = "row">
-<!--         <div class = "span4 ">
-          <p> Allergy </p>
-          <p><%#= select_tag :allergy, options_from_collection_for_select(Allergy.all, "id", "name"), :include_blank => true %></p>
-        </div>
-
-        <div class = "span4">
-          <p> Medication </p>
-          <p> <%#= select_tag :medication, options_from_collection_for_select(Medication.all, "id", "name"), :include_blank => true %> </p>
-        </div>
-
-        <div class = "span3 ">
-          <p> Support Services </p>
-          <p> <%#= select_tag :support_service, options_from_collection_for_select(SupportService.all, "id", "name"), :include_blank => true %> </p>
-        </div> -->
-</div> <!-- End ROW -->
-
-<h3> Other Information </h3>
-<div class = "row">
-<!--         <div class = "span4 ">
-          <p> Allergy </p>
-          <p><%#= select_tag :allergy, options_from_collection_for_select(Allergy.all, "id", "name"), :include_blank => true %></p>
-        </div>
-
-        <div class = "span4">
-          <p> Medication </p>
-          <p> <%#= select_tag :medication, options_from_collection_for_select(Medication.all, "id", "name"), :include_blank => true %> </p>
-        </div>
-
-        <div class = "span3 ">
-          <p> Support Services </p>
-          <p> <%#= select_tag :support_service, options_from_collection_for_select(SupportService.all, "id", "name"), :include_blank => true %> </p>
-        </div> -->
-</div> <!-- End ROW -->
-
-          </div></div></div>
-    </div>  
-
-  </div>
-
-    <%= submit_tag "Search", :name => nil %>
-
-
-    </div>
-
-    <div class="tab-pane fade" id="add_new">
-       <h3 align = "center"> New Event </h3>
-      <p>
-        <%= button_to "Event",
-            new_event_path(:type => 'student'),
-            :action => 'get',
-            :class => 'btn btn-primary'%>
-      </p>
-    </div>
-  </div>
+<h4> Search by </h4>  
+<table align="center" class = "span12 table-bordered">
+  <tr>
+    <td><strong> Person </strong> </td>
+    <td>
+      <%= simple_form_for :search, :url => events_by_person_path, :method => "get" do |f| %>
+      <%= f.input :name, :label => 'Person Name (Search by first name, last name, or both)' %>
+      <%= f.submit 'Search' %>
+      <% end %> 
+    </td>
+  </tr>
+  <tr>
+    <td><strong> Type of Event </strong> </td>
+    <td>
+      <%= simple_form_for :search, :url => events_by_type_path, :method => "get" do |f| %>
+      <%= f.input :type, :label => 'Event Type' %>
+      <%= f.submit 'Search' %>
+      <% end %> 
+    </td>
+  </tr>
+</table>
 </div>

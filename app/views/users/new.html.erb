@@ -1,5 +1,8 @@
-<h1>New user</h1>
+<div class="page-header">
+	<h1>New user</h1>
+<div>
 
+<div class="bigContainer">
 <%= simple_nested_form_for @user do |f| %>
 	<p>
 		<%= f.label :email, "Email Address" %>
@@ -18,15 +21,16 @@
 		<%= f.label :kind, "Type of User" %>
 		<%= f.select :kind, [['Please Select',nil], ['Admin(Access to everything)','admin'], ['Coordinator', 'coordinator']] %>
 	</p>
-	
+	<div class="span8">
 	<p> <strong> Admin: </strong> Has access to everything. </p>
 	<p> <strong> Coordinator: </strong> Can modify the events/program locations assigned below. Can edit information of the people enrolled/attending the program/event the coordinator is managing.</p>
 	<!-- <p> <strong> Person: </strong> Use this for student accounts. Can modify their own information. Cannot view/edit anything else. </p> -->
-
+</div>
 	<hr>
-	<h1> Coordinator Fields </h1>
+	
+	<h3> Coordinator Fields </h3>
 	<div class = "row">
-
+	<div class="scootThis">
   <table id ="user_events", class = "span10 table table-striped">
           <%= f.simple_fields_for :user_events do |user_event_form| %>
           <%= render :partial => "user_event_fields", :locals => { :f => user_event_form } %>
@@ -37,9 +41,11 @@
           <br/><%= f.link_to_add(raw("<i class='icon-plus icon-white'></i> Add Event"), :user_events, :class => 'btn btn-mini btn-primary') %>
         </p>
 	</div>
+</div>
 
 
 	<%= f.submit %>
 <% end %>
 
 <%= link_to 'Back', users_path %>
+</div>

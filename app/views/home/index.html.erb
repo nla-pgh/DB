@@ -1,20 +1,14 @@
 <%# if current_user && current_user.is_admin? %>
-  <%#= render :partial => "admin_home" %>
+  <%= render :partial => "admin_home" %>
 <%# elsif current_user && current_user.is_member? %>
   <%#= render :partial => "member_home" %>  
 <%# else %>
   <%#= render :partial => "general_home" %>
 <%# end %>
 
-<div class="page-header"> <h1>Welcome to the Home Page</h1>
-</div>
-<div class="bigContainer">
-<div class="container">
-	<p> things </p>
+
 <!-- 	<div class="span4">
 		<div class="well">
 		  picture here
 		</div>
 	</div> -->
-</div>
-</div>

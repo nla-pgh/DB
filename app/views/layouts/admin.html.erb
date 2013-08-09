@@ -9,19 +9,15 @@
 
 <body>
 
-<table>
-	<tr>
-		<td>
-			<h4> Logged in as Admin </h4>
-			<h4>  <%= link_to "Log Out", '/log_out', class: "btn btn-primary" %> </h4>
-			<div class= "navigation">
-				<%= render :partial => "partials/admin_nav" %>
-			</div>
-		</td>
-		<td>
+<div class="fixed_nav">
+	<h4> Logged in as Admin </h4>
+	<h4>  <%= link_to "Log Out", '/log_out', class: "btn btn-primary" %> </h4>
+	<div class= "navigation">
+		<%= render :partial => "partials/admin_nav" %>
+	</div>
+</div>
+
 			<%= yield %>
-		</td>
-	</tr>
-</table>
+
 </body>
 </html>

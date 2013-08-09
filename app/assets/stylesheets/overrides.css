@@ -72,22 +72,23 @@ td.centered {
 }
 
 .page-header {
-	position:fixed;
+	position:absolute;
 		top: -15px; 
 		left:300px; 
 		text-transform:uppercase; 
 	}
 
 .bigContainerNav{
-	position:fixed;
+	position:absolute;
 	top:106px;
 	left:200px;
 }
 
 .bigContainer{
-	position:fixed;
+	position:absolute;
 	top:106px;
 	left:200px;
+
 }
 
 .scootThis{
@@ -101,4 +102,16 @@ td.centered {
 	top:100px;
 }  
 
+.fixed_nav{
+	position: fixed;
+	z-index: 100;
+}
 
+.buttonfloat{
+	float:left;
+	padding: 2px;
+}
+
+.commentDropdown{
+	float:left;
+}

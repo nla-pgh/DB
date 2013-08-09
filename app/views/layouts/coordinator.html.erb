@@ -8,22 +8,16 @@
 </head>
 
 <body>
-<div class="span4">
-<div class = "row">
+
+<div class="fixed-nav">
 	<h4> Logged in as Coordinator </h4>
-	<h4>  <%= link_to "Log Out", '/log_out', class: "offset1 btn" %> </h4>
-</div>
+	<h4>  <%= link_to "Log Out", '/log_out', class: "btn btn-inverse" %> </h4>
 	<div class= "navigation">
 		<%= render :partial => "partials/coordinator_nav" %>
 	</div>
-</div>
 
-<div class="span12">
-	<div class="content">
-	<%= yield %>
-	</div>
 </div>
-
+<%= yield %>
 
 </body>
 </html>

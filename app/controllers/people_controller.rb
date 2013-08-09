@@ -13,7 +13,7 @@ class PeopleController < ApplicationController
     if(params[:is_other] == "true") then roles_where_string << 'roles.name = "other" OR ' end
 # -------------------------------------------------------
     if(params[:first_name] != "") then general_info_string << 'people.first_name = "' + params[:first_name] + '" AND ' end
-    if(params[:last_name] != "") then general_info_string << "people.last__name = '" + params[:last_name] + "' AND " end
+    if(params[:last_name] != "") then general_info_string << "people.last_name = '" + params[:last_name] + "' AND " end
     if(params[:gender] == 'Male') then general_info_string << "people.gender = true AND " end
     if(params[:gender] == 'Female') then general_info_string << "people.gender = false AND " end
     if(params[:race] != '') then general_info_string << "people.race = '" + params[:race] + "' AND " end
@@ -79,6 +79,7 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
+    @people = Person.all
   end
 
   # GET /people/1
